@@ -45,7 +45,7 @@ mutation {
 
 ```graphql
 query {
-    clientes {
+    customers {
         statusCode
         msg
         data{
@@ -56,7 +56,7 @@ query {
 }
 
 query {
-    clientes {
+    customers {
         statusCode
         msg
         data{
@@ -87,7 +87,7 @@ query {
 
 ```graphql
 query {
-    cliente(id: 1) {
+    customer(id: 1) {
         statusCode
         msg
         clienteId
@@ -108,7 +108,7 @@ query {
 }
 ```
 
-6. add / save cliente
+6. add / save customer
 
 ```graphql
 mutation{
@@ -116,7 +116,7 @@ mutation{
         data:{
             cpf: "00000000002"
             nome: "Rafael Genericuser da Silva"
-            email: "dasilva123@cliente.com"
+            email: "dasilva123@customer.com"
             telefone: "(000) 111111111"
             cep: "11111111"
             logradouro: "Rua da Ficção e Meu Teste"
@@ -133,7 +133,7 @@ mutation{
 }
 ```
 
-7. deletar cliente
+7. deletar customer
 
 ```graphql
 mutation {

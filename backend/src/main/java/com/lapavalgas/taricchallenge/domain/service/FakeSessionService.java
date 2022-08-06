@@ -1,8 +1,8 @@
-package com.lapavalgas.taricchallenge.session;
+package com.lapavalgas.taricchallenge.domain.service;
 
-import com.lapavalgas.taricchallenge.clienteDomain.entities.MSG;
+import com.lapavalgas.taricchallenge.domain.MSG;
 
-public class FakeSession {
+public class FakeSessionService {
     private static String ADMIN_USER = "taric";
     private static String ADMIN_PASSWORD = "taric1234";
     public static String USER_LOGGED = "";

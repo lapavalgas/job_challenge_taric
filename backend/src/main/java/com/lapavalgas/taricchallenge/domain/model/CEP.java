@@ -1,4 +1,4 @@
-package com.lapavalgas.taricchallenge.clienteDomain.entities;
+package com.lapavalgas.taricchallenge.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -6,14 +6,17 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Brazilian ZIP Code
+ */
 @Entity
-@Table(name = "enderecoCep")
+@Table(name = "cep")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-@EqualsAndHashCode(exclude = {"endereco"})
-public class EnderecoCEP {
+@EqualsAndHashCode(exclude = {"address"})
+public class CEP {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,27 +24,28 @@ public class EnderecoCEP {
 
     @Column(name = "cep")
     private String cep;
+
     @Column(name = "logradouro")
     private String logradouro;
-    @Column(name = "completo")
-    private String complemento;
-    @Column(name = "numero")
-    private String numero;
+
     @Column(name = "bairro")
     private String bairro;
+
     @Column(name = "localidade")
     private String localidade;
+
     @Column(name = "uf")
     private String uf;
+
     @Column(name = "ibge")
     private String ibge;
 
-    @OneToMany(mappedBy = "enderecoCep", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @JsonIgnoreProperties("enderecoCep")
+    @OneToMany(mappedBy = "cep", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("cep")
     @ToString.Exclude
-    private List<Endereco> enderecos;
+    private List<Address> addresses;
 
-    public void addEndereco(Endereco endereco) {
-        this.enderecos.add(endereco);
+    public void addressAssociate(Address address) {
+        this.addresses.add(address);
     }
 }

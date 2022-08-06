@@ -1,5 +1,4 @@
 type Query {
-    logoff: Data
     clientes: Data
     cliente(id: ID!): Data
     enderecosCep: Data
@@ -7,8 +6,11 @@ type Query {
 
 type Mutation {
     login(user: String, pass: String): Data
-    addressByCEP(cep: String): Data
-    saveCliente(data: DataInput): Data
+    logoff: Data
+
+    buscaCep(cep: String): Data
+
+    salvaCliente(data: DataInput): Data
     deleteCliente(id: String): Data
 }
 
@@ -58,8 +60,8 @@ type Cliente {
     id: ID!
     cpf: String
     nome: String
-    contato: Contato
-    endereco: Endereco
+    contact: Contato
+    address: Endereco
 
 }
 
@@ -67,14 +69,14 @@ type Contato {
     id: ID!
     email: String
     telefone: String
-    cliente: Cliente
+    customer: Cliente
 }
 
 type Endereco {
     id: ID!
     enderecoCep: EnderecoCEP
     complemento: String
-    cliente: Cliente
+    customer: Cliente
 }
 
 type EnderecoCEP{

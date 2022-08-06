@@ -1,11 +1,10 @@
-package com.lapavalgas.taricchallenge.clienteDomain.services;
+package com.lapavalgas.taricchallenge.domain.service;
 
-import com.lapavalgas.taricchallenge.clienteDomain.entities.DTO;
-import com.lapavalgas.taricchallenge.clienteDomain.entities.EnderecoCEP;
-import com.lapavalgas.taricchallenge.clienteDomain.entities.MSG;
-import com.lapavalgas.taricchallenge.clienteDomain.entities.Mapper;
-import com.lapavalgas.taricchallenge.clienteDomain.repositories.EnderecoCEPRepository;
-import com.lapavalgas.taricchallenge.session.FakeSession;
+import com.lapavalgas.taricchallenge.domain.DTO;
+import com.lapavalgas.taricchallenge.domain.MSG;
+import com.lapavalgas.taricchallenge.domain.Mapper;
+import com.lapavalgas.taricchallenge.domain.model.*;
+import com.lapavalgas.taricchallenge.domain.repository.CEPRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
@@ -17,10 +16,10 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 @Controller
-public class EnderecoService {
+public class AddressService {
 
     @Autowired
-    EnderecoCEPRepository enderecoCEPRepository;
+    CEPRepository cepRepository;
 
     private final String OPEN_CEP_BASE_URI = "https://opencep.com/v1/";
 
@@ -38,25 +37,34 @@ public class EnderecoService {
         }
     }
 
-    private EnderecoCEP lookingForCepInOurDatabase(String cep) {
-        if (enderecoCEPRepository.existsByCep(cep)) {
-            return enderecoCEPRepository.findByCep(cep);
+    private CEP lookingForCepInOurDatabase(String cep) {
+        if (cepRepository.existsByCep(cep)) {
+            return cepRepository.findByCep(cep);
         }
         return null;
     }
 
-    @SchemaMapping(typeName = "Mutation", value = "addressByCEP")
-    public DTO addressByCEP(@Argument String cep) throws URISyntaxException {
-        if (!FakeSession.isUserLogged()) {
-            var ourEnderecoCep = lookingForCepInOurDatabase(cep);
-            if (ourEnderecoCep == null) {
+    @SchemaMapping(typeName = "Mutation", value = "buscaCep")
+    public DTO buscaCep(@Argument String cep) {
+        if (FakeSessionService.isUserLogged()) {
+            var ourCep = lookingForCepInOurDatabase(cep);
+            if (ourCep == null) {
                 return httpRequesterToOpenCep(cep);
             }
-            var dto = Mapper.enderecoCEPToDTO(ourEnderecoCep);
+            var dto = Mapper.CEPToDTO(ourCep);
             return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.CEP_ALREADY_IN_OUR_DATABASE);
         }
         var dto = new DTO();
         return dto.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_NOT_LOGGED);
     }
 
+    @SchemaMapping(typeName = "Query", value = "enderecosCep")
+    public DTO enderecosCep() {
+        if (FakeSessionService.isUserLogged()) {
+            var dto = Mapper.addressListToDTOListFullParse(cepRepository.findAll());
+            return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.ADDRESS_SUCCESS_TO_LOAD);
+        }
+        var dto = new DTO();
+        return dto.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_LOGOFF);
+    }
 }

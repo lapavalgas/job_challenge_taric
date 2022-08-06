@@ -1,4 +1,4 @@
-package com.lapavalgas.taricchallenge.clienteDomain.entities;
+package com.lapavalgas.taricchallenge.domain;
 
 public class MSG {
 

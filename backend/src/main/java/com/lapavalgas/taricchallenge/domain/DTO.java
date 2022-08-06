@@ -1,4 +1,4 @@
-package com.lapavalgas.taricchallenge.clienteDomain.entities;
+package com.lapavalgas.taricchallenge.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The DTO data must be in Portuguese
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,12 +20,10 @@ public class DTO {
 
     private Long clienteId;
     private Long enderecoCepId;
-
     private String cpf;
     private String nome;
     private String email;
     private String telefone;
-
     private String cep;
     private String logradouro;
     private String numero;
@@ -30,7 +32,6 @@ public class DTO {
     private String localidade;
     private String uf;
     private String ibge;
-
     private String statusCode;
     private String msg;
     private String exception;
@@ -55,4 +56,5 @@ public class DTO {
     public void addData(Long id) {
         clientesAssociados.add(id);
     }
+
 }
