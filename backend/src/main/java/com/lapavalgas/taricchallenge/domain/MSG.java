@@ -11,7 +11,7 @@ public class MSG {
     public static String USER_LOGOFF = "User logout";
 
     //    CEP VALIDATION
-    public static final String OPEN_CEP_VALID = "The ZIP code is valid";
+    public static final String OPEN_CEP_VALID = "The ZIP code is valid by OpenCEP";
     public static final String OPEN_CEP_INVALID = "The ZIP code is invalid";
     public static final String CEP_ALREADY_IN_OUR_DATABASE = "The ZIP code exist in our database";
     public static final String CEP_NOT_PRESENT_IN_OUR_DATABASE = "The ZIP code doesn't exist in our database";

@@ -2,15 +2,17 @@ package com.lapavalgas.taricchallenge.domain.service;
 
 import com.lapavalgas.taricchallenge.domain.DTO;
 import com.lapavalgas.taricchallenge.domain.MSG;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.util.Assert;
 
 @SpringBootTest
-//@ContextConfiguration(classes = {AddressService.class, DTO.class})
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class AddressServiceTest {
 
     @Autowired
@@ -21,6 +23,9 @@ public class AddressServiceTest {
         MSG.isToLog(false);
     }
 
+    @AfterEach
+    public void after(){ LoginService.logoff(); }
+
     public void authentication() {
         LoginService.login("taric", "taric1234");
     }
@@ -30,24 +35,24 @@ public class AddressServiceTest {
         var dto = addressService.buscaCep("88101200");
         Assert.isTrue(
                 dto.getStatusCode().equals("400"),
-                "TEST ERROR - addressByCEP api failed to check authentication");
+                "TEST ERROR - 'addressByCEP api' failed to check authentication");
     }
 
     @Test
-    void check_addressByCEP_200() {
+    void check_addressByCEP_api_200() {
         authentication();
         var dto = addressService.buscaCep("88101200");
         Assert.isTrue(
                 dto.getStatusCode().equals("200"),
-                "TEST ERROR - addressByCEP api failed to check OpenCEP with valid value");
+                "TEST ERROR - 'addressByCEP api' failed to check OpenCEP with valid value");
     }
 
     @Test
-    void check_addressByCEP_404() {
+    void check_addressByCEP_api_404() {
         authentication();
         var dto = addressService.buscaCep("--------");
         Assert.isTrue(
                 dto.getStatusCode().equals("404"),
-                "TEST ERROR - addressByCEP api failed to check OpenCEP with invalid value");
+                "TEST ERROR - 'addressByCEP api' failed to check OpenCEP with invalid value");
     }
 }

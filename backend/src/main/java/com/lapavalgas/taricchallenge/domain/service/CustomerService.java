@@ -11,6 +11,8 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+import javax.transaction.Transactional;
+
 @Controller
 public class CustomerService {
 
@@ -44,10 +46,27 @@ public class CustomerService {
         return dto.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_LOGOFF);
     }
 
-    private Customer saveClienteLogic(Customer customer) {
+    private boolean isExistingCustomer(DTO data) {
+        if (data.getClienteId() == null) {
+            return false;
+        }
+        if (customerRepository.findById(data.getClienteId()).isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isExistingCEP(String cep) {
+        if (cepRepository.findByCep(cep).isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    private Customer salvaClienteLogic(Customer customer) {
         var cep = customer.getAddress().getCep().getCep();
         try {
-            var enderecoCepInOurDataBase = cepRepository.findByCep(cep);
+            var enderecoCepInOurDataBase = cepRepository.findByCep(cep).get();
             if (enderecoCepInOurDataBase == null) {
                 throw new Exception(MSG.CEP_NOT_PRESENT_IN_OUR_DATABASE);
             }
@@ -60,10 +79,11 @@ public class CustomerService {
         return customer;
     }
 
+    @Transactional
     @SchemaMapping(typeName = "Mutation", value = "salvaCliente")
     public DTO salvaCliente(@Argument DTO data) {
         if (FakeSessionService.isUserLogged()) {
-            var savedCliente = saveClienteLogic(Mapper.dtoToCustomerFullParse(data));
+            var savedCliente = salvaClienteLogic(Mapper.dtoToCustomerFullParse(data));
             var dto = Mapper.customerToDTOFullParse(savedCliente);
             return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.CUSTOMER_SUCCESS_TO_SAVE);
         }
@@ -75,7 +95,6 @@ public class CustomerService {
         var dto = new DTO();
         if (FakeSessionService.isUserLogged()) {
             try {
-
                 customerRepository.deleteById(id);
                 return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.CUSTOMER_SUCCESS_TO_DELETE);
             } catch (Exception e) {

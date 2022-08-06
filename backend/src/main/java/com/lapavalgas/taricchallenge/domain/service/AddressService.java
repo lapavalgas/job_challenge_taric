@@ -39,7 +39,7 @@ public class AddressService {
 
     private CEP lookingForCepInOurDatabase(String cep) {
         if (cepRepository.existsByCep(cep)) {
-            return cepRepository.findByCep(cep);
+            return cepRepository.findByCep(cep).get();
         }
         return null;
     }

@@ -1,6 +1,6 @@
 ## Schemas
 
-1. Login
+1. login
 
 ```graphql
 mutation {
@@ -13,10 +13,10 @@ mutation {
 
 ```
 
-2. Logoff
+2. logoff
 
 ```graphql
-query {
+mutation {
     logoff{
         statusCode
         msg
@@ -24,11 +24,14 @@ query {
 }
 ```
 
-3. Valida CEP
+3. buscaCep
 
 ```graphql
 mutation {
-    addressByCEP(cep: "88101260") {
+    buscaCep(cep: "88101260") {
+        statusCode
+        msg
+        enderecoCepId
         cep
         logradouro
         bairro
@@ -41,11 +44,11 @@ mutation {
 }
 ```
 
-4. Get Client list
+4. clientes
 
 ```graphql
 query {
-    customers {
+    clientes {
         statusCode
         msg
         data{
@@ -54,9 +57,10 @@ query {
         }
     }
 }
-
+```
+```graphql
 query {
-    customers {
+    clientes {
         statusCode
         msg
         data{
@@ -83,11 +87,11 @@ query {
 }
 ```
 
-5. Get client details
+5. cliente(id: {id})
 
 ```graphql
 query {
-    customer(id: 1) {
+    cliente(id: 1) {
         statusCode
         msg
         clienteId
@@ -108,15 +112,16 @@ query {
 }
 ```
 
-6. add / save customer
+6. salvaCliente(data: {data})
 
 ```graphql
 mutation{
-    saveCliente(
+    salvaCliente(
         data:{
+            enderecoCepId: "12"
             cpf: "00000000002"
             nome: "Rafael Genericuser da Silva"
-            email: "dasilva123@customer.com"
+            email: "dasilva123@cliente.com"
             telefone: "(000) 111111111"
             cep: "11111111"
             logradouro: "Rua da Ficção e Meu Teste"
@@ -133,7 +138,7 @@ mutation{
 }
 ```
 
-7. deletar customer
+7. deleteCliente(id: {id})
 
 ```graphql
 mutation {
@@ -141,7 +146,7 @@ mutation {
 }
 ```
 
-8. listar enderecos
+8. enderecosCep
 
 ```graphql
 query {
