@@ -1,0 +1,91 @@
+type Query {
+    logoff: Data
+    clientes: Data
+    cliente(id: ID!): Data
+    enderecosCep: Data
+}
+
+type Mutation {
+    login(user: String, pass: String): Data
+    addressByCEP(cep: String): Data
+    saveCliente(data: DataInput): Data
+    deleteCliente(id: String): Data
+}
+
+
+type Data {
+    clienteId: ID
+    enderecoCepId: ID
+    cpf: String
+    nome: String
+    email: String
+    telefone: String
+    cep: String
+    logradouro: String
+    numero: String
+    complemento: String
+    bairro: String
+    localidade: String
+    uf: String
+    ibge: String
+    msg: String
+    statusCode: String
+    exception: String
+    error: String
+    cookie: String
+    data: [Data]
+    clientesAssociados: [String]
+}
+
+input DataInput {
+    clienteId: ID
+    enderecoCepId: ID
+    cpf: String
+    nome: String
+    email: String
+    telefone: String
+    cep: String
+    logradouro: String
+    numero: String
+    complemento: String
+    bairro: String
+    localidade: String
+    uf: String
+    ibge: String
+}
+
+type Cliente {
+    id: ID!
+    cpf: String
+    nome: String
+    contato: Contato
+    endereco: Endereco
+
+}
+
+type Contato {
+    id: ID!
+    email: String
+    telefone: String
+    cliente: Cliente
+}
+
+type Endereco {
+    id: ID!
+    enderecoCep: EnderecoCEP
+    complemento: String
+    cliente: Cliente
+}
+
+type EnderecoCEP{
+    id: ID!
+    cep: String
+    logradouro: String
+    numero: String
+    complemento: String
+    bairro: String
+    localidade: String
+    uf: String
+    ibge: String
+    enderecos: [Endereco]
+}
