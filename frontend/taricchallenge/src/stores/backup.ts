@@ -25,7 +25,7 @@ interface Data {
 };
 
 export const useFetchData = defineStore({
-  id: "1",
+  id: "fetchData",
   state: () => ({
     URI: "http://127.0.0.1:8080/graphql" as string,
     data: {} as Data,
@@ -37,8 +37,24 @@ export const useFetchData = defineStore({
   actions: {
 
     login: async function (user: string, pass: string): Promise<Data> {
-      const query = 'query: "mutation {login(user:\"+taric\", pass:\"taric1234\") {cookie statusCode msg }}"'
-      return fetch(this.URI, { method: 'POST', headers: { Accept: "application/json", "Content-Type": "application/json", }, body: JSON.stringify(query) })
+      user = "taric";
+      pass = "taric1234";
+      const body = JSON.stringify({
+        query: `
+          mutation {
+            login(user: "taric", pass: "taric1234") {
+              statusCode
+              msg
+            }
+          }
+        `
+      });
+
+      return fetch(this.URI, {
+        method: 'POST',
+        headers: { Accept: "application/json", "Content-Type": "application/json", },
+        body: body
+      })
         .then((response) => response.json());
     },
 

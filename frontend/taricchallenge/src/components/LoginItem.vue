@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAuthenticationStore } from '@/stores/authenticationStore';
+const authentication = useAuthenticationStore();
 
 </script>
 <template>
@@ -8,15 +10,15 @@
                 <h5>Sign in</h5><br>
                 <div class="col">
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Usuário</label>
+                        <input v-model="authentication.user" type="text" class="form-control" id="userLoginInput" placeholder="user">
+                        <label for="userLoginInput">Usuário</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                        <label for="floatingInput">Senha</label>
+                        <input  v-model="authentication.pass" type="password" class="form-control" id="passLoginInput" placeholder="password">
+                        <label for="passLoginInput">Senha</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <button id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">LOGIN</button>
+                        <button @click="authentication.login()" id="btn-login" class="btn btn-primary btn-lg btn-block" type="submit">LOGIN</button>
                     </div>
                 </div>
             </div>

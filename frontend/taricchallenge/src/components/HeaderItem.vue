@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useAuthenticationStore } from '@/stores/authenticationStore';
+const authentication = useAuthenticationStore();
 
 </script>
 <template>
@@ -13,7 +15,7 @@
                 </li>
             </ul>
             <button type="button" class="btn btn-sm btn-warning btn-margin-right link-app">
-                <RouterLink class="nav-link link-app" to="/">LOGOUT</RouterLink>
+                <RouterLink @click="authentication.logoff()" class="nav-link link-app" to="/">LOGOUT</RouterLink>
             </button>
         </div>
     </nav>
