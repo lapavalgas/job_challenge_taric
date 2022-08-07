@@ -24,7 +24,7 @@ public class LoginService {
                 return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.USER_LOGGED);
             }
         } else {
-            return dto.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_ALREADY_LOGGED);
+            return dto.setHttpResponse(MSG.STATUS_CODE_406, MSG.USER_ALREADY_LOGGED);
         }
         return dto.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_LOGIN_FAILED);
     }
