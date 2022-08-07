@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TARIC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+</head>
+
+<style>
+    .bg-azulcalcinha{
+        background-color: #89aed0;
+    }
+    .btn-card-userdata {
+        position: absolute;
+        padding-top: 1rem;
+        height: 100%;
+        right: 1rem;
+    }
+
+    @media (min-width: 768px) {
+
+        #clientes,
+        #cadastro {
+            max-width: 80%;
+            margin: 0 auto;
+        }
+
+        .card-userdata {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            line-height: 2;
+        }
+
+        .enderecodata {
+            margin-left: 4rem;
+        }
+    }
+</style>
+
+<body>
+
+
+    <!-- <header>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Clientes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Cadastrar novo cliente</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header> -->
+
+    <main>
+        <!-- LOGIN -->
+        <!-- LOGIN -->
+        <!-- <section id="home" class="vh-100">
+            <section class="vh-100 bg-azulcalcinha">
+                <div class="container py-5 h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                <div class="card-body p-5 text-center">
+                                    <h3 class="mb-5">Sign in</h3>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="typeEmailX-2">Usuário</label>
+                                        <input type="email" id="typeEmailX-2" class="form-control form-control-lg" />
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="typePasswordX-2">Senha</label>
+                                        <input type="password" id="typePasswordX-2"
+                                            class="form-control form-control-lg" />
+                                    </div>
+                                    <button class="btn btn-primary btn-lg btn-block" type="submit">LOGIN</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section> -->
+
+        <!-- <section id="clientes">
+            <div class=" container py-5 h-100">
+       
+                <div class="list-group">
+                    <span>
+                        <button class="list-group-item list-group-item-action" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#userUUID1" aria-expanded="false" aria-controls="userUUID1">
+                            Rafael Lapa Valgas
+                            <span style="position: absolute; right: 1rem;">
+                            </span>
+                        </button>
+
+                        <div class="collapse" id="userUUID1">
+                            <div class="card card-body card-userdata">
+                                <div class="personaldata">
+                                    <span class="personaldatatxt" style="font-weight: 600; text-decoration: underline;">Dados do cliente</span>
+                                    <br>
+
+                                    <span class="CPF">CPF: 064.481.979-07</span>
+                                    <br>
+
+                                    <span class="email">lapavalgas@gmail.com</span>
+                                    <br>
+
+                                    <span class="telefone">(048) 98835-1392</span>
+                                    <br>
+
+                                    <span class="birth">14/04/1988</span>
+                                </div>
+                                <br>
+
+                                <div class="enderecodata">
+                                    <span class="personaldatatxt" style="font-weight: 600; text-decoration: underline;">Endereço</span>
+                                    <br>
+
+                                    <span class="logradouro">Av. Salvador di Bernardi</span>,
+                                    <span class="numero">811</span>,
+                                    <br>
+
+                                    <span class="bairro">Campinas</span>,
+                                    <span class="localidade">São José</span>,
+                                    <span class="uf">SC</span>
+                                    <br>
+
+                                    <span class="cep">CEP: 88101-260</span>
+                                    <br>
+
+                                    <span class="complemento">Bloco H4, Apartamento 304</span>
+                                </div>
+
+                                <div class="btn-card-userdata">
+                                    <button style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
+                                        class="btn btn-primary">Editar</button>
+                                    <br>
+
+                                    <button style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
+                                        class="btn btn-danger">Deletar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <br>
+
+                    <span>
+                        <button class="list-group-item list-group-item-action" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#userUUID2" aria-expanded="false" aria-controls="userUUID2">
+                            Bruna Lapa Valgas
+                            <span style="position: absolute; right: 1rem;">
+                            </span>
+                        </button>
+
+                        <div class="collapse" id="userUUID2">
+                            <div class="card card-body">mesmo componente</div>
+                        </div>
+                    </span>
+                    <br>
+                </div>
+
+                <nav aria-label="...">
+                    <ul class="pagination pagination-sm justify-content-center">
+                        <li class="page-item active" aria-current="page">
+                            <span class="page-link">1</span>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section> -->
+
+        <section id="cadastro">
+            <div class=" container py-5 h-100">
+
+
+                <div class="personaldataform">
+
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Nome completo</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">E-mail</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Telefone</label>
+                    </div>
+                </div>
+
+                <div class="enderecodataform">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">CEP</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Logradouro</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Bairro</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Cidade</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Estado</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Complemento</label>
+                    </div>
+                </div>
+
+                <button style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
+                    class="btn btn-primary">Salvar</button>
+
+                <button style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
+                    class="btn btn-danger">Deletar</button>
+            </div>
+        </section>
+    </main>
+    <aside></aside>
+    <footer></footer>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

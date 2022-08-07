@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.vitest.json"
+    }
+  ],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    // isso permite uma inferência mais estrita para propriedades de dados no `this`
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node"
+  }
+}

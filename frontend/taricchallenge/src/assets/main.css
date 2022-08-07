@@ -1,0 +1,167 @@
+/* VARIABLES */
+
+:root {
+    --clr-primary: #89aed0;
+    --clr-secondary: #89d0ab;
+    --clr-tertiary: #d0b589;
+    --clr-quaternary: #9a89d0;
+    --clr-quinary: #d09189;
+
+}
+
+/* GLOBALS */
+
+.bg-app {
+    background-color: var(--clr-primary);
+}
+
+.link-app {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    max-height: 60px;
+}
+
+
+.main-container {
+    margin: 1rem;
+    padding: 2rem;
+}
+
+#clientes {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+/* HEADER & FOOTER */
+
+.header {
+    top: 0;
+    left: 0;
+}
+
+.nav-item-margin-left {
+    margin-left: 1rem;
+}
+
+.btn-margin-right {
+    margin-right: 2rem;
+    ;
+}
+
+.footer {
+    bottom: 0;
+    left: 0;
+}
+
+#me {
+    width: 100%;
+    background-color: var(--clr-primary);
+    padding: 3px;
+    text-align: center;
+    padding-left: 1rem;
+    font-size: .8rem;
+    font-weight: 600;
+    border-top: 1px solid #89aed0c3;
+    border-top-left-radius: 13px;
+    border-top-right-radius: 13px;
+}
+
+.taric {
+    background-color: var(--clr-quaternary);
+}
+
+.zitrus {
+    
+    background-color: var(--clr-secondary);
+}
+
+/* LOGIN */
+
+#home {
+    height: 50vh;
+}
+
+#login h5 {
+    text-align: center;
+}
+
+#login-card {
+    margin: 0 auto;
+    max-width: 45%;
+    padding: 3rem;
+    border: 1px solid rgba(0, 0, 0, 0.09);
+    border-radius: 1rem;
+}
+
+#btn-login {
+    margin-top: 1rem;
+    width: 100%;
+}
+
+/* CLIENTES */
+
+.btn-card-userdata {
+    position: absolute;
+    padding-top: 1rem;
+    height: 100%;
+    right: 1rem;
+}
+
+#tips {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+}
+
+#tips-toast {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 4px;
+    z-index: 11;
+    transition: all 1s linear;
+    text-align: center;
+}
+
+/* Esse hover é só um teste, isso deve ficar no JS no click do botão, irá adicionar essa classe no tips-toast */
+#tips-toast:focus {
+    transform: translate(0, -100px);
+    opacity: 0;
+}
+
+.btn-toast {
+    margin-top: -12px;
+}
+
+@media (min-width: 768px) {
+    .card-userdata {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        line-height: 2;
+    }
+
+    .enderecodata {
+        margin-left: 4rem;
+    }
+}
+
+/* SALVAR */
+
+#form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-form-actions {
+    min-width: 80px;
+    margin-top: 1rem;
+    margin: 0 .5rem;
+}
