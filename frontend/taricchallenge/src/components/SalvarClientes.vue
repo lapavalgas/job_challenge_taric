@@ -62,7 +62,7 @@ function deleteCustomer() {
             </div>
             <div class="col-6">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="logradouro" placeholder="Logradouro"
+                    <input disabled type="text" class="form-control bg-leve" id="logradouro" placeholder="Logradouro"
                         v-model=salvarCustomerStore.customerDetailToSave.logradouro>
                     <label class="clr-smooth" for="logradouro">Logradouro</label>
                 </div>
@@ -78,21 +78,21 @@ function deleteCustomer() {
         <div id="cep" class="row">
             <div class="col-4">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="bairro" placeholder="Bairro"
+                    <input disabled type="text" class="form-control bg-leve" id="bairro" placeholder="Bairro"
                         v-model=salvarCustomerStore.customerDetailToSave.bairro>
                     <label class="clr-smooth" for="bairro">Bairro</label>
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="cidade" placeholder="Cidade"
+                    <input disabled type="text" class="form-control bg-leve" id="cidade" placeholder="Cidade"
                         v-model=salvarCustomerStore.customerDetailToSave.localidade>
                     <label class="clr-smooth" for="cidade">Cidade</label>
                 </div>
             </div>
             <div class="col-2">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="estado" placeholder="Estado"
+                    <input disabled type="text" class="form-control bg-leve" id="estado" placeholder="Estado"
                         v-model=salvarCustomerStore.customerDetailToSave.uf>
                     <label class="clr-smooth" for="estado">Estado</label>
                 </div>
@@ -116,7 +116,7 @@ function deleteCustomer() {
             <button v-on:click="salvarCustomerStore.salvaCustomer()" type="button"
                 class="btn btn-primary btn-form-actions" :class="{ btnhidden: isEditing }">Cadastrar</button>
 
-            <button v-on:click="salvarCustomerStore.cancelar()" type="button"
+            <button v-on:click="salvarCustomerStore.back()" type="button"
                 class="btn btn-secondary btn-form-actions">Cancelar</button>
         </div>
         <button v-on:click="deleteCustomer()" type="button" class="btn btn-danger btn-form-actions"
@@ -124,6 +124,11 @@ function deleteCustomer() {
     </div>
 </template>
 <style>
+.bg-leve {
+    background-color: #e9ecef4f;
+
+}
+
 .btnhidden {
     display: none;
 }

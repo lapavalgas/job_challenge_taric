@@ -16,7 +16,7 @@ const customerId = '0' as string;
                 </li>
                 <li class="nav-item nav-item-margin-left">
                     <RouterLink v-on:click='salvarCustomerStore.setCustomer(customerId)' class="nav-link link-app"
-                        to="/salvar">Cadastrarnovo cliente </RouterLink>
+                        to="/salvar">Cadastrarnovo cliente</RouterLink>
                 </li>
             </ul>
             <button type="button" class="btn btn-sm btn-warning btn-margin-right link-app">

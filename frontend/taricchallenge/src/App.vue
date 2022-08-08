@@ -13,7 +13,7 @@ const salvarCustomerStore = useSalvarCustomerStore();
   <div>
     <header v-on:click="salvarCustomerStore.forceRender()" v-bind:class="{ logoff: !authentication.isUserLoggedValue }">
       <div class="fixed header">
-        <HeaderItem />
+        <HeaderItem :key="salvarCustomerStore.componentKey" />
       </div>
     </header>
     <main>
@@ -23,7 +23,7 @@ const salvarCustomerStore = useSalvarCustomerStore();
     </main>
     <footer>
       <div class="fixed footer">
-        <FooterItem />
+        <FooterItem :key="salvarCustomerStore.componentKey" />
       </div>
     </footer>
   </div>

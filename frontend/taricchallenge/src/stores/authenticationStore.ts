@@ -1,6 +1,7 @@
 import { defineStore, createPinia } from "pinia";
 import { markRaw } from "vue";
 import router from "@/router";
+import { useSalvarCustomerStore } from "./salvarCustomerStore";
 
 const pinia = createPinia()
 
@@ -25,11 +26,14 @@ export const useAuthenticationStore = defineStore({
     actions: {
 
         routerAuthenticationBehaviour: function (): void {
+            const salvarCustomerStore = useSalvarCustomerStore();
             if (!this.isUserLoggedValue) {
                 router.push({ path: '/' })
+                salvarCustomerStore.forceRender();
             }
             if (this.isUserLoggedValue) {
                 router.push({ path: '/clientes' })
+                salvarCustomerStore.forceRender();
             }
         },
 

@@ -117,9 +117,7 @@ export const useSalvarCustomerStore = defineStore({
             })
                 .then((res) => { return res.json() })
                 .then(res => {
-                    this.customerDetailToSave = {}
-                    this.customerId = {}
-                    router.push('/clientes')
+                    this.back();
                 })
                 .catch(err => { console.log(err); });
         },
@@ -191,14 +189,16 @@ export const useSalvarCustomerStore = defineStore({
                     this.customerDetailToSave = {}
                     this.customerId = {}
                     router.push('/clientes')
+                    this.forceRender();
                 })
                 .catch(err => { console.log(err); });
         },
 
-        cancelar: function () {
+        back: function () {
             this.customerDetailToSave = {}
             this.customerId = {}
             router.push('/clientes')
+            this.forceRender();
 
         }
 

@@ -16,5 +16,8 @@ export const useToastStore = defineStore({
             this.dismiss = true;
         },
 
+        toastTimeOut: function (): void {
+            setTimeout(this.dismissToast, 6000);
+        }
     }
 });
