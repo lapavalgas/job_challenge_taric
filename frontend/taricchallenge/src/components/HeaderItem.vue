@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useAuthenticationStore } from '@/stores/authenticationStore';
+import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
 const authentication = useAuthenticationStore();
+const salvarCustomerStore = useSalvarCustomerStore();
+
+const customerId = '0' as string;
 
 </script>
 <template>
@@ -11,7 +15,8 @@ const authentication = useAuthenticationStore();
                     <RouterLink class="nav-link link-app" to="/clientes">Clientes</RouterLink>
                 </li>
                 <li class="nav-item nav-item-margin-left">
-                    <RouterLink class="nav-link link-app" to="/salvar">Cadastrar novo cliente</RouterLink>
+                    <RouterLink v-on:click='salvarCustomerStore.setCustomer(customerId)' class="nav-link link-app"
+                        to="/salvar">Cadastrarnovo cliente </RouterLink>
                 </li>
             </ul>
             <button type="button" class="btn btn-sm btn-warning btn-margin-right link-app">

@@ -6,6 +6,8 @@ import ClientesList from "@/components/ClientesList.vue";
 <template>
   <section id="clientes">
     <ClientesToasts />
-    <ClientesList />
+    <suspense>
+      <ClientesList />
+    </suspense>
   </section>
 </template>

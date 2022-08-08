@@ -12,7 +12,7 @@ const router = createRouter({
       component: HomeLoginView,
     },
     {
-      path: "/salvar",
+      path: "/salvar/",
       name: "salvar",
       component: SalvarClientesView,
     },

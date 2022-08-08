@@ -5,7 +5,9 @@ import FormCadastrarEditarClientes from '@/components/SalvarClientes.vue';
 <template>
     <section id="clientes">
         <div class=" container py-5 h-100">
-            <FormCadastrarEditarClientes />
+            <suspense>
+                <FormCadastrarEditarClientes />
+            </suspense>
         </div>
     </section>
 </template>

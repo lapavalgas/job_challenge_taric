@@ -18,9 +18,21 @@ export const useAuthenticationStore = defineStore({
         user: "",
         pass: "",
     }),
+
     getters: {
     },
+
     actions: {
+
+        routerAuthenticationBehaviour: function (): void {
+            if (!this.isUserLoggedValue) {
+                router.push({ path: '/' })
+            }
+            if (this.isUserLoggedValue) {
+                router.push({ path: '/clientes' })
+            }
+        },
+
         loginSuccessful: function (statuscode: any): void {
             switch (statuscode) {
                 case "200":
@@ -59,6 +71,7 @@ export const useAuthenticationStore = defineStore({
                     this.loginSuccessful(res.data.login.statusCode);
                 })
                 .catch(err => { console.log(err); });
+
             this.routerAuthenticationBehaviour();
         },
 
@@ -82,11 +95,5 @@ export const useAuthenticationStore = defineStore({
                 .catch(err => { console.log(err); });
             this.routerAuthenticationBehaviour();
         },
-
-        routerAuthenticationBehaviour: function (): void {
-            if (!this.isUserLoggedValue) { router.push({ path: '/' }) }
-            if (this.isUserLoggedValue) { router.push({ path: '/clientes' }) }
-        },
-
     },
 });
