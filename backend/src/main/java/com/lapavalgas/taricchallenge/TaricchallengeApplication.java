@@ -50,6 +50,22 @@ public class TaricchallengeApplication {
             d1.setIbge("1000");
             var c1 = Mapper.dtoToCustomerFullParse(d1);
             customerRepository.save(c1);
+
+            var d2 = new DTO();
+            d2.setCpf("00000000000");
+            d2.setNome("Paulinha Delicia");
+            d2.setEmail("ppdelicinha@customer.com");
+            d2.setTelefone("(111) 111111111");
+            d2.setCep("11111111");
+            d2.setLogradouro("Av. Ficção");
+            d2.setNumero("N. 1111");
+            d2.setComplemento("Bloco 1111, Ap. 1111");
+            d2.setBairro("Cansadão");
+            d2.setLocalidade("Logo Ali");
+            d2.setUf("RS");
+            d2.setIbge("2000");
+            var c2 = Mapper.dtoToCustomerFullParse(d2);
+            customerRepository.save(c2);
         };
     }
 

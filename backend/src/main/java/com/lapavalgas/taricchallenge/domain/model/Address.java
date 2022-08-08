@@ -18,7 +18,7 @@ public class Address {
     @Column(name = "customer_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cep_id")
     private CEP cep;
 
@@ -28,7 +28,7 @@ public class Address {
     @Column(name = "addressComplement")
     private String addressComplement;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "customer_id")
     @JsonIgnoreProperties("address")

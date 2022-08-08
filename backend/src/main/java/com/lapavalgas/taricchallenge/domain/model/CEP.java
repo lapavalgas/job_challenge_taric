@@ -40,7 +40,7 @@ public class CEP {
     @Column(name = "ibge")
     private String ibge;
 
-    @OneToMany(mappedBy = "cep", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cep", fetch = FetchType.EAGER)
     @JsonIgnoreProperties("cep")
     @ToString.Exclude
     private List<Address> addresses;

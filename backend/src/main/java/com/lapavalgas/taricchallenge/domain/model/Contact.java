@@ -24,7 +24,7 @@ public class Contact {
     @Column(name = "tel")
     private String tel;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "customer_id")
     @JsonIgnoreProperties("contact")
