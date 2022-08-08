@@ -1,0 +1,31 @@
+version: '3.7'
+services:
+  backend:
+    container_name: taric-graphql-api
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/:/backend
+    networks:
+      - netsw
+    ports:
+      - '8080:8080'
+    restart: always
+    working_dir: /backend
+  frontend:
+    container_name: taric-vuejs-client
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    volumes:
+      - './frontend/:/frontend'
+      - '/frontend/node_modules'
+    networks:
+      - netsw
+    ports:
+      - '4173:4173'
+    restart: always
+networks:
+  netsw:
+    driver: bridge
