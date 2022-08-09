@@ -71,15 +71,6 @@
     border-top-right-radius: 13px;
 }
 
-.taric {
-    background-color: var(--clr-quaternary);
-}
-
-.zitrus {
-
-    background-color: var(--clr-secondary);
-}
-
 /* LOGIN */
 
 #home {
