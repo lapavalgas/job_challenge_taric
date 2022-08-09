@@ -32,8 +32,12 @@ export const useAuthenticationStore = defineStore({
         killSession: function () { this.isUserLoggedValue = false; sessionStorage.setItem("isUserLoggedValue", "undefined"); },
 
         authenticationPersistOnReload: function () {
-            if (this.getSession()) { this.setSession(true); this.routerAuthenticationBehaviour(); } else {
+            if (this.getSession()) {
+                this.setSession(true);
+                this.routerAuthenticationBehaviour();
+            } else {
                 this.setSession(false);
+                // alert("Falha na autenticação.");
                 this.routerAuthenticationBehaviour();
             }
         },
@@ -43,7 +47,6 @@ export const useAuthenticationStore = defineStore({
         routerAuthenticationBehaviour: function (): void {
             const salvarCustomerStore = useSalvarCustomerStore();
             if (!this.isUserLoggedValue) {
-                alert("Falha na autenticação.");
                 router.push({ path: '/' })
                 salvarCustomerStore.forceRender();
             }
@@ -110,7 +113,7 @@ export const useAuthenticationStore = defineStore({
                 .catch(err => { console.log(err); });
             this.killSession();
             router.push({ path: '/' })
-            
+
         },
     },
 });
