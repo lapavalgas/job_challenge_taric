@@ -2,6 +2,7 @@ const backspace = '{backspace}{backspace}{backspace}{backspace}{backspace}{backs
 
 const leftArrow = "{leftArrow}"
 
+
 describe("Open app and do the authentication", () => {
     it("Open app", () => {
         sessionStorage.setItem("isUserLoggedValue", "undefined");
@@ -51,7 +52,7 @@ describe("Check the edit customer componenet", () => {
         cy.wait(200);
     });
 
-    it("Change values to name", () => {
+    it("Change values to email", () => {
         cy.wait(200);
         cy.get("#email").type(backspace)
         cy.wait(200);
@@ -59,7 +60,7 @@ describe("Check the edit customer componenet", () => {
         cy.wait(200);
     });
 
-    it("Change values to name", () => {
+    it("Change values to telefone", () => {
         cy.get("#telefone").type(backspace)
         cy.wait(200);
         cy.get("#telefone").type(leftArrow)
@@ -70,7 +71,7 @@ describe("Check the edit customer componenet", () => {
         cy.wait(200);
     });
 
-    it("Change values to name", () => {
+    it("Change values to cep", () => {
         cy.get("#cep").type(backspace)
         cy.wait(200);
         cy.get("#cep").type(leftArrow)
@@ -81,14 +82,15 @@ describe("Check the edit customer componenet", () => {
         cy.wait(2000);
     });
 
-    it("Change values to name", () => {
+    it("Change values to numero", () => {
         cy.get("#numero").type(backspace)
         cy.wait(200);
         cy.get("#numero").type('1').blur();
-        cy.wait(200);
+        cy.wait(400);
     });
-
-    it("Change values to name", () => {
+    
+    it("Change values to complemento", () => {
+        cy.wait(200);
         cy.get("#complemento").type(backspace)
         cy.wait(200);
         cy.get("#complemento").type('Na casinha de madeira, sem número').blur();
