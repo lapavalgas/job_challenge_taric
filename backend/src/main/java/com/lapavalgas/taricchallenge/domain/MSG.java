@@ -22,12 +22,15 @@ public class MSG {
     public static final String CUSTOMER_SUCCESS_TO_DELETE = "Customer data successfully deleted";
     public static final String CUSTOMER_NOT_FOUND = "Customer not found in our database";
 
+    public static final String CPF_ALREADY_IN_DATABASE = "Customer CPF found in database ";
+
     //    ENDERECO API
     public static final String ADDRESS_SUCCESS_TO_LOAD = "Address data successfully loaded";
 
     //    STATUS CODE
     public static final String STATUS_CODE_200 = "200";
     public static final String STATUS_CODE_400 = "400";
+    public static final String STATUS_CODE_401 = "401";
     public static final String STATUS_CODE_404 = "404";
     public static final String STATUS_CODE_406 = "406";
 

@@ -306,9 +306,12 @@ export const useSalvarCustomerStore = defineStore({
                                 uf: "`+ this.customerDetailToSave.uf + `"
                                 ibge: "`+ this.customerDetailToSave.ibge + `"
                             }){
-                            clienteId
-                            enderecoCepId
-                        }
+                                clienteId
+                                enderecoCepId
+                                cpf 
+                                statusCode
+                                msg
+                              }
                     }
                       `
                 });
@@ -331,9 +334,12 @@ export const useSalvarCustomerStore = defineStore({
                                 uf: "`+ this.customerDetailToSave.uf + `"
                                 ibge: "`+ this.customerDetailToSave.ibge + `"
                             }){
-                            clienteId
-                            enderecoCepId
-                        }
+                                clienteId
+                                enderecoCepId
+                                cpf 
+                                statusCode
+                                msg
+                              }
                     }
                       `
                 });
@@ -346,12 +352,18 @@ export const useSalvarCustomerStore = defineStore({
                 .then((res) => { return res.json() })
                 .then(res => {
                     console.log(res)
-                    this.clearForm();
-                    router.push('/clientes');
-                    this.forceRender();
+                    if (res.data.salvaCliente.statusCode == "401") {
+                        alert("Erro inesperado.\n\nVocê não tem permissão para alterar o CPF.")
+                    } else {
+                        this.clearForm();
+                        router.push('/clientes');
+                        this.forceRender();
+                    }
                 })
                 .catch(err => { console.log(err); });
         },
+
+
 
         back: function () {
             this.clearForm();

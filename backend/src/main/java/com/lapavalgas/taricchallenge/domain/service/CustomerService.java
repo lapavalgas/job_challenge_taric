@@ -63,7 +63,7 @@ public class CustomerService {
         return true;
     }
 
-    private Customer salvaClienteLogic(Customer customer) {
+    private Customer salvaClienteLogic(Customer customer) throws Exception {
         var cep = customer.getAddress().getCep().getCep();
         try {
             var enderecoCepInOurDataBase = cepRepository.findByCep(cep).get();
@@ -74,7 +74,12 @@ public class CustomerService {
         } catch (Exception e) {
             customer.getAddress().getCep().setId(null);
         } finally {
-            customer = customerRepository.save(customer);
+            var isTheCpfAlreadyIn = customerRepository.findByCpf(customer.getCpf());
+            if (isTheCpfAlreadyIn.isEmpty() || isTheCpfAlreadyIn.get().getId().equals(customer.getId())) {
+                customer = customerRepository.save(customer);
+            } else {
+                throw new Exception(MSG.CPF_ALREADY_IN_DATABASE);
+            }
         }
         return customer;
     }
@@ -83,9 +88,14 @@ public class CustomerService {
     @SchemaMapping(typeName = "Mutation", value = "salvaCliente")
     public DTO salvaCliente(@Argument DTO data) {
         if (FakeSessionService.isUserLogged()) {
-            var savedCliente = salvaClienteLogic(Mapper.dtoToCustomerFullParse(data));
-            var dto = Mapper.customerToDTOFullParse(savedCliente);
-            return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.CUSTOMER_SUCCESS_TO_SAVE);
+            try {
+                var savedCliente = salvaClienteLogic(Mapper.dtoToCustomerFullParse(data));
+                var dto = Mapper.customerToDTOFullParse(savedCliente);
+                return dto.setHttpResponse(MSG.STATUS_CODE_200, MSG.CUSTOMER_SUCCESS_TO_SAVE);
+            } catch (Exception e) {
+                var dto = new DTO();
+                return dto.setHttpResponse(MSG.STATUS_CODE_401, e.getMessage());
+            }
         }
         return data.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_LOGOFF);
     }

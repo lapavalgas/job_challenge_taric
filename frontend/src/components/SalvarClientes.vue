@@ -31,7 +31,7 @@ if (!isEditing) { salvarCustomerStore.startForm() }
             <div class="col-4">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="cpf" placeholder="CPF" maxlength="11" pattern="\d*"
-                        v-bind:class="{ 'is-invalid': !salvarCustomerStore.formIsValid.cpf }"
+                        :disabled="isEditing" v-bind:class="{ 'is-invalid': !salvarCustomerStore.formIsValid.cpf }"
                         @focusout="salvarCustomerStore.form().validaCpf()"
                         v-model=salvarCustomerStore.customerDetailToSave.cpf v-on:input="salvarCustomerStore.cpfMask()">
                     <label class="clr-smooth" for="cpf">CPF</label>
