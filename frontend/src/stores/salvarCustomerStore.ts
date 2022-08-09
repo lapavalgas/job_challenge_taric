@@ -6,14 +6,12 @@ import router from "@/router";
 
 const pinia = createPinia()
 
-pinia.use(({ store }) => {
-    store.router = markRaw(router)
-})
+pinia.use(({ store }) => { store.router = markRaw(router); })
 
 export const useSalvarCustomerStore = defineStore({
     id: "salvar",
-    state: () => ({
 
+    state: () => ({
         URI: "http://127.0.0.1:8080/graphql" as string,
 
         buscaCepBff: "" as string,
@@ -39,12 +37,9 @@ export const useSalvarCustomerStore = defineStore({
 
     }),
 
-    getters: {
-
-    },
+    getters: {},
 
     actions: {
-
         form: function () {
             return {
                 validaNome: () => {
@@ -106,7 +101,6 @@ export const useSalvarCustomerStore = defineStore({
             this.form().validaBairro();
             this.form().validaCidade();
             this.form().validaEstado();
-
             const validCustomer = (
                 this.formIsValid.nome &&
                 this.formIsValid.cpf &&
@@ -119,7 +113,6 @@ export const useSalvarCustomerStore = defineStore({
                 this.formIsValid.cidade &&
                 this.formIsValid.estado
             );
-
             if (validCustomer) { return true; } else { return false; }
         },
 
@@ -136,46 +129,22 @@ export const useSalvarCustomerStore = defineStore({
             this.customerDetailToSave.uf = "";
         },
 
-        nameMask: function () {
-            this.customerDetailToSave.nome = this.customerDetailToSave.nome
-                .replace(/[^a-zA-Z ]/g, "");
-        },
+        nameMask: function () { this.customerDetailToSave.nome = this.customerDetailToSave.nome.replace(/[^a-zA-Z ]/g, ""); },
 
-        cpfMask: function () {
-            this.customerDetailToSave.cpf = this.customerDetailToSave.cpf
-                .replace(/[^\d]/g, "")
-                .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4");
-        },
+        cpfMask: function () { this.customerDetailToSave.cpf = this.customerDetailToSave.cpf.replace(/[^\d]/g, "").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4"); },
 
-        telefoneMask: function () {
-            this.customerDetailToSave.telefone = this.customerDetailToSave.telefone
-                .replace(/[^\d]/g, "")
-                .replace(/(\d{0})(\d{2})(\d{0})(\d{5})/g, "$1($2)$3 $4-");
-        },
+        telefoneMask: function () { this.customerDetailToSave.telefone = this.customerDetailToSave.telefone.replace(/[^\d]/g, "").replace(/(\d{0})(\d{2})(\d{0})(\d{5})/g, "$1($2)$3 $4-"); },
 
-        cepEnderecoMask: function () {
-            this.customerDetailToSave.cep = this.customerDetailToSave.cep
-                .replace(/[^\d]/g, "")
-            // .replace(/(\d{5})/g, "$1-");
-            this.checkCep();
-        },
+        // .replace(/(\d{5})/g, "$1-");
+        cepEnderecoMask: function () { this.customerDetailToSave.cep = this.customerDetailToSave.cep.replace(/[^\d]/g, ""); this.checkCep(); },
 
-        numeroEnderecoMask: function () {
-            this.customerDetailToSave.numero = this.customerDetailToSave.numero.replace(/[^\d]/g, "");
-        },
+        numeroEnderecoMask: function () { this.customerDetailToSave.numero = this.customerDetailToSave.numero.replace(/[^\d]/g, ""); },
 
-        ufEnderecoMask: function () {
-            this.customerDetailToSave.estado = this.customerDetailToSave.estado.replace(/^\d+$/, "");
-        },
+        ufEnderecoMask: function () { this.customerDetailToSave.estado = this.customerDetailToSave.estado.replace(/^\d+$/, ""); },
 
-        forceRender: function () {
-            this.componentKey += 1;
-        },
+        forceRender: function () { this.componentKey += 1; },
 
-        confirm: function (txt: string) {
-            return confirm(txt);
-
-        },
+        confirm: function (txt: string) { return confirm(txt); },
 
         confirmarSalvar: function () {
             if (this.confirm("Deseja salvar os dados do cliente?")) {
@@ -186,19 +155,12 @@ export const useSalvarCustomerStore = defineStore({
                 }
             }
         },
-        confirmarDeletar: function (clienteId: string) {
-            if (this.confirm("Deseja deletar os dados do cliente?")) { this.deleteCustomer(clienteId); }
 
-        },
-        confirmarCancelar: function () {
-            if (this.confirm("Deseja cancelar operação?")) { this.back(); }
+        confirmarDeletar: function (clienteId: string) { if (this.confirm("Deseja deletar os dados do cliente?")) { this.deleteCustomer(clienteId); } },
 
-        },
+        confirmarCancelar: function () { if (this.confirm("Deseja cancelar operação?")) { this.back(); } },
 
-        setCustomer: function (customerId: string): void {
-            this.customerDetailToSave = {};
-            this.customerId = customerId;
-        },
+        setCustomer: function (customerId: string): void { this.customerDetailToSave = {}; this.customerId = customerId; },
 
         loadCustomerData: function (data: any): void { this.customerDetailToSave = data; },
 
@@ -261,7 +223,6 @@ export const useSalvarCustomerStore = defineStore({
                 .catch(err => { console.log(err); });
         },
 
-
         deleteCustomer: async function (customerId: any): Promise<any> {
             const body = JSON.stringify({
                 query: `
@@ -281,7 +242,6 @@ export const useSalvarCustomerStore = defineStore({
                 })
                 .catch(err => { console.log(err); });
         },
-
 
         salvaCustomer: async function (): Promise<any> {
             const isEditing = ("0".includes(this.customerId)) ? false : true;
@@ -363,15 +323,7 @@ export const useSalvarCustomerStore = defineStore({
                 .catch(err => { console.log(err); });
         },
 
-
-
-        back: function () {
-            this.clearForm();
-            router.push('/clientes')
-            this.forceRender();
-
-        }
-
+        back: function () { this.clearForm(); router.push('/clientes'); this.forceRender(); }
+        
     },
 });
-

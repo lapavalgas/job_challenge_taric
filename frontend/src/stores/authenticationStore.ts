@@ -5,55 +5,40 @@ import { useSalvarCustomerStore } from "./salvarCustomerStore";
 
 const pinia = createPinia()
 
-pinia.use(({ store }) => {
-    store.router = markRaw(router)
-})
+pinia.use(({ store }) => { store.router = markRaw(router); });
 
 export const useAuthenticationStore = defineStore({
     id: "authentication",
+
     state: () => ({
 
         URI: "http://127.0.0.1:8080/graphql" as string,
 
         isUserLoggedValue: false as boolean,
+
         user: "",
+
         pass: "",
+
     }),
 
-    getters: {
-    },
+    getters: {},
 
     actions: {
+        setSession: function (value: boolean) { this.isUserLoggedValue = value; sessionStorage.setItem("isUserLoggedValue", "" + this.isUserLoggedValue); },
 
-        setSession: function (value: boolean) {
-            this.isUserLoggedValue = value;
-            sessionStorage.setItem("isUserLoggedValue", "" + this.isUserLoggedValue);
-        },
+        getSession: function () { return (sessionStorage.getItem("isUserLoggedValue") == "true") ? true : false; },
 
-        getSession: function () {
-            return (sessionStorage.getItem("isUserLoggedValue") == "true") ? true : false;
-        },
-
-        killSession: function () {
-            this.isUserLoggedValue = false;
-            sessionStorage.setItem("isUserLoggedValue", "undefined");
-        },
+        killSession: function () { this.isUserLoggedValue = false; sessionStorage.setItem("isUserLoggedValue", "undefined"); },
 
         authenticationPersistOnReload: function () {
-            if (this.getSession()) {
-                this.setSession(true);
-                this.routerAuthenticationBehaviour();
-            } else {
+            if (this.getSession()) { this.setSession(true); this.routerAuthenticationBehaviour(); } else {
                 this.setSession(false);
                 this.routerAuthenticationBehaviour();
             }
         },
 
-        keyboardEnterSubmit: function (event: any) {
-            if (event.keyCode == 13) {
-                this.login();
-            }
-        },
+        keyboardEnterSubmit: function (event: any) { if (event.keyCode == 13) { this.login(); } },
 
         routerAuthenticationBehaviour: function (): void {
             const salvarCustomerStore = useSalvarCustomerStore();
@@ -125,6 +110,7 @@ export const useAuthenticationStore = defineStore({
                 .catch(err => { console.log(err); });
             this.killSession();
             router.push({ path: '/' })
+            
         },
     },
 });

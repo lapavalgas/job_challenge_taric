@@ -2,7 +2,9 @@
 import ClientesDetail from "./ClientesListElementDetail.vue";
 import { useCustomerStore } from '@/stores/customerStore';
 import { onBeforeMount } from "vue";
+
 const customerStore = useCustomerStore();
+
 onBeforeMount(() => {
     customerStore.loadCustomers();
 });

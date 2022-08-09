@@ -12,5 +12,4 @@ const props = defineProps({
         <span class="telefone">{{ props.customerDetail.telefone }}</span> <br>
         <span class="birth"><br></span>
     </div>
-
 </template>

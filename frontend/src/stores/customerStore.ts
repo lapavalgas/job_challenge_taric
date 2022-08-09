@@ -2,8 +2,8 @@ import { defineStore } from "pinia";
 
 export const useCustomerStore = defineStore({
     id: "customer",
-    state: () => ({
 
+    state: () => ({
         URI: "http://127.0.0.1:8080/graphql" as string,
 
         customers: [] as any,
@@ -11,8 +11,8 @@ export const useCustomerStore = defineStore({
         customerIdFocus: 1,
 
     }),
-    getters: {
-    },
+
+    getters: {},
 
     actions: {
         loadCustomers: async function (): Promise<any> {
@@ -58,7 +58,6 @@ export const useCustomerStore = defineStore({
                 .catch(err => { console.log(err); });
         },
 
-
         getCustomerById: async function (id: any): Promise<any> {
             const body = JSON.stringify({
                 query: `
@@ -96,11 +95,7 @@ export const useCustomerStore = defineStore({
                 .catch(err => { console.log(err); });
         },
 
-
-        setCustomerFocus(id: number): void {
-            this.customerIdFocus = id;
-        },
-
+        setCustomerFocus(id: number): void { this.customerIdFocus = id; },
 
     },
 });

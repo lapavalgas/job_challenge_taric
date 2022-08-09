@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useAuthenticationStore } from '@/stores/authenticationStore';
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
+
 const authentication = useAuthenticationStore();
 const salvarCustomerStore = useSalvarCustomerStore();
-
 const customerId = '0' as string;
 
 function clientes() { salvarCustomerStore.clearForm(); }

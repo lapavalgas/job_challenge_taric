@@ -3,6 +3,7 @@ import ClientesListDetailPersonalData from './ClientesListElementDetailPersonalD
 import ClientesListDetailAddressData from './ClientesListElementDetailAddressData.vue';
 import ClientesListDetailsActions from './ClientesListElementDetailActions.vue'
 import { useCustomerStore } from '@/stores/customerStore';
+
 const props = defineProps({
     customerId: String,
 });

@@ -1,5 +1,6 @@
 describe("Open app", () => {
   it("Open app", () => {
+    sessionStorage.setItem("isUserLoggedValue", "undefined");
     cy.visit("/");
     cy.wait(200);
     cy.contains("h5", "Sign in");

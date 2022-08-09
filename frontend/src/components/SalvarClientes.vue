@@ -2,16 +2,13 @@
 import { useCustomerStore } from '@/stores/customerStore';
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
 
-
 const customerStore = useCustomerStore();
 const salvarCustomerStore = useSalvarCustomerStore();
 const isEditing = ("0".includes(salvarCustomerStore.customerId)) ? false : true;
+
 let data = await customerStore.getCustomerById(salvarCustomerStore.customerId);
 salvarCustomerStore.loadCustomerData(data);
 if (!isEditing) { salvarCustomerStore.startForm() }
-
-
-
 
 </script>
 <template>
@@ -38,7 +35,6 @@ if (!isEditing) { salvarCustomerStore.startForm() }
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-8">
                 <div class="form-floating mb-3">
@@ -60,7 +56,6 @@ if (!isEditing) { salvarCustomerStore.startForm() }
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-3">
                 <div class="form-floating mb-2">
@@ -131,7 +126,6 @@ if (!isEditing) { salvarCustomerStore.startForm() }
             </div>
         </div>
     </div>
-
     <div id="form-actions">
         <div>
             <button v-on:click="salvarCustomerStore.confirmarSalvar()" type="button"

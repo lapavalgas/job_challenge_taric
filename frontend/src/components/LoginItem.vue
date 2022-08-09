@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAuthenticationStore } from '@/stores/authenticationStore';
+
 const authentication = useAuthenticationStore();
 window.addEventListener('keydown', (event) => {
     authentication.keyboardEnterSubmit(event);

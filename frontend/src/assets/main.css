@@ -6,7 +6,6 @@
     --clr-tertiary: #d0b589;
     --clr-quaternary: #9a89d0;
     --clr-quinary: #d09189;
-
 }
 
 /* GLOBALS */
@@ -105,6 +104,7 @@
 }
 
 /* CLIENTES */
+
 .btn-card-userdata {
     position: absolute;
     padding-top: 1rem;
@@ -126,12 +126,6 @@
     transition: all 1s linear;
     text-align: center;
 }
-/* Esse hover é só um teste, isso deve ficar no JS no click do botão, irá adicionar essa classe no tips-toast */
-#tips-toast:focus {
-    transform: translate(0, -100px);
-    opacity: 0;
-}
-
 
 .btn-toast {
     margin-top: -12px;
@@ -140,7 +134,6 @@
 .customerListMargin {
     margin: 5px 0;
 }
-
 
 @media (min-width: 768px) {
     .card-userdata {

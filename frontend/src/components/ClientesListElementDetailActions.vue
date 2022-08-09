@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
+
 const salvarCustomerStore = useSalvarCustomerStore();
 const props = defineProps({
     customerId: 0 as any,
@@ -17,7 +18,6 @@ const props = defineProps({
             style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button" class="btn btn-danger">Deletar
         </button>
     </div>
-
 </template>
 <style>
 .dec {

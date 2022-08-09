@@ -5,13 +5,11 @@ import FooterItem from "./components/FooterItem.vue";
 import { useAuthenticationStore } from "./stores/authenticationStore";
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
 import { onBeforeMount } from "vue";
+
 const authentication = useAuthenticationStore();
 const salvarCustomerStore = useSalvarCustomerStore();
 
-
 onBeforeMount(() => { authentication.authenticationPersistOnReload(); });
-
-
 
 </script>
 <template>
@@ -37,4 +35,5 @@ onBeforeMount(() => { authentication.authenticationPersistOnReload(); });
 .logoff {
   display: none;
 }
+
 </style>
