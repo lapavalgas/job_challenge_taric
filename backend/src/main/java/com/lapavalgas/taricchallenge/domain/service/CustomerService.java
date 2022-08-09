@@ -46,31 +46,14 @@ public class CustomerService {
         return dto.setHttpResponse(MSG.STATUS_CODE_400, MSG.USER_LOGOFF);
     }
 
-    private boolean isExistingCustomer(DTO data) {
-        if (data.getClienteId() == null) {
-            return false;
-        }
-        if (customerRepository.findById(data.getClienteId()).isEmpty()) {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean isExistingCEP(String cep) {
-        if (cepRepository.findByCep(cep).isEmpty()) {
-            return false;
-        }
-        return true;
-    }
-
     private Customer salvaClienteLogic(Customer customer) throws Exception {
         var cep = customer.getAddress().getCep().getCep();
         try {
-            var enderecoCepInOurDataBase = cepRepository.findByCep(cep).get();
-            if (enderecoCepInOurDataBase == null) {
+            var enderecoCepInOurDataBase = cepRepository.findByCep(cep);
+            if (enderecoCepInOurDataBase.isEmpty()) {
                 throw new Exception(MSG.CEP_NOT_PRESENT_IN_OUR_DATABASE);
             }
-            customer.getAddress().setCep(enderecoCepInOurDataBase);
+            customer.getAddress().setCep(enderecoCepInOurDataBase.get());
         } catch (Exception e) {
             customer.getAddress().getCep().setId(null);
         } finally {

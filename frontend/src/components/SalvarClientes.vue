@@ -18,7 +18,7 @@ if (!isEditing) { salvarCustomerStore.startForm() }
     <h5 v-if="isEditing">Editando os dados do cliente</h5>
     <h5 v-else>Cadastro de novo cliente</h5>
     <div class="personaldataform">
-        <div id="cliente" class="row">
+        <div class="row">
             <div class="col-8">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="nomeCompleto" placeholder="Nome completo"
@@ -39,7 +39,7 @@ if (!isEditing) { salvarCustomerStore.startForm() }
             </div>
         </div>
 
-        <div id="contato" class="row">
+        <div class="row">
             <div class="col-8">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="email" placeholder="E-mail"
@@ -61,7 +61,7 @@ if (!isEditing) { salvarCustomerStore.startForm() }
             </div>
         </div>
 
-        <div id="cep" class="row">
+        <div class="row">
             <div class="col-3">
                 <div class="form-floating mb-2">
                     <input type="text" class="form-control" id="cep" placeholder="CEP" maxlength="9" pattern="\d*"
@@ -92,7 +92,7 @@ if (!isEditing) { salvarCustomerStore.startForm() }
                 </div>
             </div>
         </div>
-        <div id="cep" class="row">
+        <div class="row">
             <div class="col-4">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control bg-leve" id="bairro" placeholder="Bairro"

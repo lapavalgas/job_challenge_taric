@@ -98,5 +98,13 @@ public class LoginServiceTest {
                 dto.getStatusCode() == "200",
                 "TEST ERROR - 'login api' failed to check success authentication");
     }
+    @Test
+    void check_login_api_userAlreadyLogged() throws Exception {
+        authentication();
+        var dto = authentication();
+        Assert.isTrue(
+                dto.getStatusCode() == "406",
+                "TEST ERROR - 'login api' failed to check success authentication");
+    }
 
 }

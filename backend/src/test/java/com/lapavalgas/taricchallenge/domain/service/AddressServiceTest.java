@@ -32,12 +32,20 @@ public class AddressServiceTest {
 
     @Test
     void check_addressByCEP_api_authentication() {
-        var dto = addressService.buscaCep("88101200");
+        var dto = addressService.buscaCep("88101-200");
         Assert.isTrue(
                 dto.getStatusCode().equals("400"),
                 "TEST ERROR - 'addressByCEP api' failed to check authentication");
     }
 
+    @Test
+    void check_existent_addressByCEP_api_200() {
+        authentication();
+        var dto = addressService.buscaCep("88067-140");
+        Assert.isTrue(
+                dto.getStatusCode().equals("200"),
+                "TEST ERROR - 'addressByCEP api' failed to check an existent address value");
+    }
     @Test
     void check_addressByCEP_api_200() {
         authentication();
@@ -54,5 +62,22 @@ public class AddressServiceTest {
         Assert.isTrue(
                 dto.getStatusCode().equals("404"),
                 "TEST ERROR - 'addressByCEP api' failed to check OpenCEP with invalid value");
+    }
+
+    @Test
+    void check_addressBy_api_200() {
+        authentication();
+        var dto = addressService.enderecosCep();
+        Assert.isTrue(
+                dto.getStatusCode().equals("200"),
+                "TEST ERROR - 'addressByCEP api' failed to retrieve the cep list");
+    }
+
+    @Test
+    void check_addressBy_api_400() {
+        var dto = addressService.enderecosCep();
+        Assert.isTrue(
+                dto.getStatusCode().equals("400"),
+                "TEST ERROR - 'addressByCEP api' failed to retrieve the cep list");
     }
 }

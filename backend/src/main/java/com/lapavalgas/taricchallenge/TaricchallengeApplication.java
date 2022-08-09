@@ -36,14 +36,14 @@ public class TaricchallengeApplication {
     ApplicationRunner applicationRunner(CustomerRepository customerRepository) {
         return args -> {
             var d1 = new DTO();
-            d1.setCpf("01187963054");
+            d1.setCpf("011.879.630-54");
             d1.setNome("Rafael da Silva");
             d1.setEmail("dasilvar@customer.com");
-            d1.setTelefone("048988881313");
-            d1.setCep("88803140");
+            d1.setTelefone("(48) 98888-1313");
+            d1.setCep("88803-140");
             d1.setLogradouro("Rua Thomé de Souza");
             d1.setNumero("N. 2321");
-            d1.setComplemento("Na esquinsa com a casa de madeira velha");
+            d1.setComplemento("Na esquina com a casa de madeira velha");
             d1.setBairro("Michel");
             d1.setLocalidade("Criciúma");
             d1.setUf("SC");
@@ -52,11 +52,11 @@ public class TaricchallengeApplication {
             customerRepository.save(c1);
 
             var d2 = new DTO();
-            d2.setCpf("03377289097");
+            d2.setCpf("033.772.890-97");
             d2.setNome("Paula Curzio");
             d2.setEmail("ulacurzio@customer.com");
-            d2.setTelefone("048988760213");
-            d2.setCep("88067140");
+            d2.setTelefone("(48) 98876-0213");
+            d2.setCep("88067-140");
             d2.setLogradouro("Rua Manoel Vidal");
             d2.setNumero("N. 1A");
             d2.setComplemento("Ed. Azul, Ap. 61");

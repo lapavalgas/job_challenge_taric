@@ -116,7 +116,7 @@ public class CustomerServiceTest {
         authentication();
         var dto = customerService.salvaCliente(getDTOMock_existingCustomer_newAddress());
         Assert.isTrue(
-                dto.getStatusCode().equals("200"),
+                dto.getStatusCode().equals("401"),
                 "TEST ERROR - 'clientes api' failed to fetch data of single customer");
     }
 
@@ -125,35 +125,10 @@ public class CustomerServiceTest {
         authentication();
         var dto = customerService.salvaCliente(getDTOMock_existingCustomer_existingAddress());
         Assert.isTrue(
-                dto.getStatusCode().equals("200"),
+                dto.getStatusCode().equals("401"),
                 "TEST ERROR - 'clientes api' failed to fetch data of single customer");
     }
 
-    /**
-     * Esse teste não pode ser aplicado sem um sistema de autenticação completo
-     * InvalidCustomer seria um usuário não logado
-     */
-//    @Test
-//    void check_salvaCliente_api_404_invalidCustomer_validAddress() {
-//        authentication();
-//        var dto = customerService.salvaCliente(getDTOMock_invalidCustomer_validAddress());
-//        Assert.isTrue(
-//                dto.getStatusCode().equals("404"),
-//                "TEST ERROR - 'clientes api' failed to fetch data of single customer");
-//    }
-
-    /**
-     * Esse teste não pode ser aplicado sem um sistema de autenticação completo
-     * InvalidCustomer seria um usuário não logado
-     */
-//    @Test
-//    void check_salvaCliente_api_400_validCustomer_invalidAddress() {
-//        authentication();
-//        var dto = customerService.salvaCliente(getDTOMock_validCustomer_invalidAddress());
-//        Assert.isTrue(
-//                dto.getStatusCode().equals("400"),
-//                "TEST ERROR - 'clientes api' failed to fetch data of single customer");
-//    }
     @Test
     void check_deleteCliente_api_200() {
         authentication();
@@ -174,11 +149,11 @@ public class CustomerServiceTest {
 
     DTO getAnyDTOMock() {
         var mock = new DTO();
-        mock.setCpf("00000000001");
+        mock.setCpf("000.000.000-01");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
-        mock.setCep("00000000");
+        mock.setTelefone("(00) 00000-0000");
+        mock.setCep("00000-000");
         mock.setLogradouro("Av. Teste Ficção");
         mock.setNumero("N. 100");
         mock.setComplemento("Bloco 1000, Ap. 100");
@@ -191,11 +166,11 @@ public class CustomerServiceTest {
 
     DTO getDTOMock_newCustomerAddress() {
         var mock = new DTO();
-        mock.setCpf("01001000001");
+        mock.setCpf("010.010.000-01");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
-        mock.setCep("01000101");
+        mock.setTelefone("(00) 00000-0000");
+        mock.setCep("01000-101");
         mock.setLogradouro("Av. Teste Ficção");
         mock.setNumero("N. 100");
         mock.setComplemento("Bloco 1000, Ap. 100");
@@ -208,12 +183,12 @@ public class CustomerServiceTest {
 
     DTO getDTOMock_newCustomer_existingAddress() {
         var mock = new DTO();
-        mock.setCpf("01001000001");
+        mock.setCpf("010.010.000-01");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
+        mock.setTelefone("(00) 00000-0000");
         mock.setEnderecoCepId(Long.valueOf(1));
-        mock.setCep("00000000");
+        mock.setCep("88067-140");
         mock.setLogradouro("Av. Teste Ficção");
         mock.setNumero("N. 100");
         mock.setComplemento("Bloco 1000, Ap. 100");
@@ -227,12 +202,12 @@ public class CustomerServiceTest {
     DTO getDTOMock_existingCustomer_newAddress() {
         var mock = new DTO();
         mock.setClienteId(Long.valueOf(1));
-        mock.setCpf("00000000000");
+        mock.setCpf("033.772.890-97");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
+        mock.setTelefone("(00) 00000-0000");
         mock.setEnderecoCepId(Long.valueOf(999));
-        mock.setCep("00000100");
+        mock.setCep("00000-100");
         mock.setLogradouro("Av. Teste Ficção");
         mock.setNumero("N. 100");
         mock.setComplemento("Bloco 1000, Ap. 100");
@@ -246,12 +221,12 @@ public class CustomerServiceTest {
     DTO getDTOMock_existingCustomer_existingAddress() {
         var mock = new DTO();
         mock.setClienteId(Long.valueOf(1));
-        mock.setCpf("00000000000");
+        mock.setCpf("033.772.890-97");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
+        mock.setTelefone("(00) 00000-0000");
         mock.setEnderecoCepId(Long.valueOf(1));
-        mock.setCep("00000000");
+        mock.setCep("88067-140");
         mock.setLogradouro("Av. Teste Ficção");
         mock.setNumero("N. 100");
         mock.setComplemento("Bloco 1000, Ap. 100");
@@ -265,12 +240,12 @@ public class CustomerServiceTest {
     DTO getDTOMock_invalidCustomer_validAddress() {
         var mock = new DTO();
         mock.setClienteId(Long.valueOf(-31));
-        mock.setCpf("00000000000");
+        mock.setCpf("000.000.000-00");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
+        mock.setTelefone("(00) 00000-0000");
         mock.setEnderecoCepId(Long.valueOf(1));
-        mock.setCep("00000000");
+        mock.setCep("00000-000");
         mock.setLogradouro("Av. Teste Ficção");
         mock.setNumero("N. 100");
         mock.setComplemento("Bloco 1000, Ap. 100");
@@ -286,10 +261,10 @@ public class CustomerServiceTest {
     DTO getDTOMock_validCustomer_invalidAddress() {
         var mock = new DTO();
         mock.setClienteId(Long.valueOf(1));
-        mock.setCpf("00000000000");
+        mock.setCpf("000.000.000-00");
         mock.setNome("Rafael Genericuser");
         mock.setEmail("genericuser@customer.com");
-        mock.setTelefone("(000) 000000000");
+        mock.setTelefone("(00) 00000-0000");
         mock.setEnderecoCepId(Long.valueOf(-31));
         mock.setCep(INVALID_CEP);
         mock.setLogradouro("Av. Teste Ficção");
@@ -306,11 +281,11 @@ public class CustomerServiceTest {
         var d1 = new DTO();
         d1.setClienteId(Long.valueOf(1));
         d1.setEnderecoCepId(Long.valueOf(1));
-        d1.setCpf("00000000000");
+        d1.setCpf("000.000.000-00");
         d1.setNome("Rafael Genericuser");
         d1.setEmail("genericuser@customer.com");
-        d1.setTelefone("(000) 000000000");
-        d1.setCep("00000000");
+        d1.setTelefone("(00) 00000-0000");
+        d1.setCep("00000-000");
         d1.setLogradouro("Av. Ficção");
         d1.setNumero("N. 100");
         d1.setComplemento("Bloco 1000, Ap. 100");
