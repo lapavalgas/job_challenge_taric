@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useAuthenticationStore } from '@/stores/authenticationStore';
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
+import { useAddressStore } from '@/stores/addressStore';
 
+const addressStore = useAddressStore();
 const authentication = useAuthenticationStore();
 const salvarCustomerStore = useSalvarCustomerStore();
 const customerId = '0' as string;
@@ -21,6 +23,10 @@ function logout() { salvarCustomerStore.clearForm(); authentication.confirmLogof
                 </li>
                 <li class="nav-item nav-item-margin-left">
                     <RouterLink @click='cadastrar()' class="nav-link link-app" to="/salvar">Cadastrar novo cliente
+                    </RouterLink>
+                </li>
+                <li class="nav-item nav-item-margin-left">
+                    <RouterLink @click='addressStore.buscaListaEnderecos()' class="nav-link link-app" to="/enderecos">Endereços
                     </RouterLink>
                 </li>
             </ul>
