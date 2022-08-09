@@ -37,7 +37,6 @@ export const useAuthenticationStore = defineStore({
                 this.routerAuthenticationBehaviour();
             } else {
                 this.setSession(false);
-                // alert("Falha na autenticação.");
                 this.routerAuthenticationBehaviour();
             }
         },

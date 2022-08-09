@@ -6,7 +6,6 @@ const addressStore = useAddressStore();
 
 let buscaCep = addressStore.buscaCepResult.buscaCep;
 
-
 </script>
 <template>
     <br>

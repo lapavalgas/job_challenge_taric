@@ -17,7 +17,7 @@ onBeforeMount(() => {
         <button class="list-group-item list-group-item-action" type="button" data-bs-toggle="collapse"
             :data-bs-target="'#userCDID' + customer.clienteId" aria-expanded="false"
             :aria-controls="'userCDID' + customer.clienteId">
-            {{ customer.nome }} 
+            {{ customer.nome }}
         </button>
         <Suspense>
             <ClientesDetail :customerId="customer.clienteId" />

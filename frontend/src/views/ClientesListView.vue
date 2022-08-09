@@ -7,7 +7,7 @@ import ClientesList from "@/components/ClientesList.vue";
   <section id="clientes">
     <ClientesToasts />
     <suspense>
-      <ClientesList  />
+      <ClientesList />
     </suspense>
   </section>
 </template>

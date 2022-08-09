@@ -23,18 +23,6 @@ describe("Navigate to address feature", () => {
     });
 })
 
-// describe("Check the address list feature", () => {
-//     it("Click in the register customer button", () => {
-//         cy.get("a").contains('Listar endereços da base de dados').click();
-//         cy.wait(1000);
-//     });
-
-//     it("Check first element", () => {
-//         cy.get(".logradouro").contains('Rua Thomé de Souza');
-//         cy.wait(200);
-//     });
-// })
-
 describe("Check the address search feature with valid data", () => {
     it("Type a valid ZIP code input", () => {
         cy.wait(200);

@@ -26,7 +26,8 @@ function logout() { salvarCustomerStore.clearForm(); authentication.confirmLogof
                     </RouterLink>
                 </li>
                 <li class="nav-item nav-item-margin-left">
-                    <RouterLink @click='addressStore.buscaListaEnderecos()' class="nav-link link-app" to="/enderecos">Endereços
+                    <RouterLink @click='addressStore.buscaListaEnderecos()' class="nav-link link-app" to="/enderecos">
+                        Endereços
                     </RouterLink>
                 </li>
             </ul>

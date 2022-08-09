@@ -17,16 +17,10 @@ export const useAddressStore = defineStore({
 
     }),
 
-    getters: {
-
-    },
+    getters: {},
 
     actions: {
-
-        keyboardEnterSubmit: function () {
-            this.updateView();
-            router.push('/enderecos/buscar');
-        },
+        keyboardEnterSubmit: function () { this.updateView(); router.push('/enderecos/buscar'); },
 
         updateView: function () {
             if (this.inputCep == "") { this.inputCep = "00000000" }
@@ -100,7 +94,6 @@ export const useAddressStore = defineStore({
                 .then((res) => { return res.json() })
                 .then(res => {
                     this.listaEnderecos = res;
-                    // this.statusCode = res.buscaCep.statusCode;
                     return res;
                 })
                 .catch(err => { console.log(err); });

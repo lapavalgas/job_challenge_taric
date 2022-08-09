@@ -15,7 +15,7 @@ const addressStore = useAddressStore();
                 <div class="col">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Digite um CEP" aria-label="CEP"
-                           v-on:keyup.enter="addressStore.keyboardEnterSubmit()" maxlength="8" pattern="\d*"
+                            v-on:keyup.enter="addressStore.keyboardEnterSubmit()" maxlength="8" pattern="\d*"
                             v-model="addressStore.inputCep" aria-describedby="button-addon2">
                         <RouterLink type="button" class="btn btn-outline-secondary"
                             v-on:click="addressStore.updateView()" to="/enderecos/buscar">
