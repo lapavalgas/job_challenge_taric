@@ -3,9 +3,9 @@ import { useAuthenticationStore } from '@/stores/authenticationStore';
 
 const authentication = useAuthenticationStore();
 
-window.addEventListener('keydown', (event) => {
-    authentication.keyboardEnterSubmit(event);
-});
+// window.addEventListener('keydown', (event) => {
+//     authentication.keyboardEnterSubmit(event);
+// });
 
 </script>
 <template>
@@ -13,7 +13,7 @@ window.addEventListener('keydown', (event) => {
         <div id="login" class="container py-5 h-100">
             <div id="login-card">
                 <h5>Sign in</h5><br>
-                <div class="col">
+                <div  v-on:keyup.enter="authentication.keyboardEnterSubmit()" class="col">
                     <div class="form-floating mb-3">
                         <input v-model="authentication.user" type="text" class="form-control" id="userLoginInput"
                             placeholder="user">

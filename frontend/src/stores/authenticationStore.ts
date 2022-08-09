@@ -42,7 +42,7 @@ export const useAuthenticationStore = defineStore({
             }
         },
 
-        keyboardEnterSubmit: function (event: any) { if (event.keyCode == 13) { this.login(); } },
+        keyboardEnterSubmit: function () { this.login(); },
 
         routerAuthenticationBehaviour: function (): void {
             const salvarCustomerStore = useSalvarCustomerStore();
@@ -51,7 +51,7 @@ export const useAuthenticationStore = defineStore({
                 salvarCustomerStore.forceRender();
             }
             if (this.isUserLoggedValue) {
-                // router.push({ path: '/clientes' })
+                router.push({ path: '/clientes' })
                 salvarCustomerStore.forceRender();
             }
         },

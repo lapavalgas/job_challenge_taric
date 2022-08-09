@@ -31,10 +31,4 @@ const addressStore = useAddressStore();
     </section>
 </template>
 <style>
-/* to="{
-                        path: '/enderecos/listar/',
-                        name: 'enderecosListar',
-                        props: addressStore.listaEnderecos(),
-                        query: {enderecosListar: }
-                    }" */
 </style>
