@@ -25,9 +25,40 @@ export const useAuthenticationStore = defineStore({
 
     actions: {
 
+        setSession: function (value: boolean) {
+            this.isUserLoggedValue = value;
+            sessionStorage.setItem("isUserLoggedValue", "" + this.isUserLoggedValue);
+        },
+
+        getSession: function () {
+            return (sessionStorage.getItem("isUserLoggedValue") == "true") ? true : false;
+        },
+
+        killSession: function () {
+            this.isUserLoggedValue = false;
+            sessionStorage.setItem("isUserLoggedValue", "undefined");
+        },
+
+        authenticationPersistOnReload: function () {
+            if (this.getSession()) {
+                this.setSession(true);
+                this.routerAuthenticationBehaviour();
+            } else {
+                this.setSession(false);
+                this.routerAuthenticationBehaviour();
+            }
+        },
+
+        keyboardEnterSubmit: function (event: any) {
+            if (event.keyCode == 13) {
+                this.login();
+            }
+        },
+
         routerAuthenticationBehaviour: function (): void {
             const salvarCustomerStore = useSalvarCustomerStore();
             if (!this.isUserLoggedValue) {
+                alert("Falha na autenticação.");
                 router.push({ path: '/' })
                 salvarCustomerStore.forceRender();
             }
@@ -39,18 +70,10 @@ export const useAuthenticationStore = defineStore({
 
         loginSuccessful: function (statuscode: any): void {
             switch (statuscode) {
-                case "200":
-                    this.isUserLoggedValue = true;
-                    break;
-                case "406":
-                    this.isUserLoggedValue = true;
-                    break;
-                case "400":
-                    this.isUserLoggedValue = false;
-                    break;
-                default:
-                    this.isUserLoggedValue = false;
-                    break;
+                case "200": this.setSession(true); break;
+                case "406": this.setSession(true); break;
+                case "400": this.setSession(false); break;
+                default: this.setSession(false); break;
             }
         },
 
@@ -79,8 +102,11 @@ export const useAuthenticationStore = defineStore({
             this.routerAuthenticationBehaviour();
         },
 
+        confirmLogoff: function () {
+            if (confirm("Deseja fazer logout?")) { this.logoff(); }
+        },
+
         logoff: async function (): Promise<any> {
-            this.isUserLoggedValue = false;
             const body = JSON.stringify({
                 query: `
                 mutation {
@@ -88,7 +114,7 @@ export const useAuthenticationStore = defineStore({
                         statusCode
                     }
                 }
-              `
+                `
             });
             await fetch(this.URI, {
                 method: 'POST',
@@ -97,7 +123,8 @@ export const useAuthenticationStore = defineStore({
             })
                 .then((res) => { return res.json() })
                 .catch(err => { console.log(err); });
-            this.routerAuthenticationBehaviour();
+            this.killSession();
+            router.push({ path: '/' })
         },
     },
 });

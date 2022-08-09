@@ -80,6 +80,21 @@ export const useSalvarCustomerStore = defineStore({
             }
         },
 
+        clearForm: function () {
+            this.customerDetailToSave = {}
+            this.customerId = {}
+            this.formIsValid.nome = true;
+            this.formIsValid.cpf = true;
+            this.formIsValid.email = true;
+            this.formIsValid.telefone = true;
+            this.formIsValid.cep = true;
+            this.formIsValid.logradouro = true;
+            this.formIsValid.numero = true;
+            this.formIsValid.bairro = true;
+            this.formIsValid.cidade = true;
+            this.formIsValid.estado = true;
+        },
+
         formValida: function () {
             this.form().validaNome();
             this.form().validaCpf();
@@ -331,17 +346,15 @@ export const useSalvarCustomerStore = defineStore({
                 .then((res) => { return res.json() })
                 .then(res => {
                     console.log(res)
-                    this.customerDetailToSave = {}
-                    this.customerId = {}
-                    router.push('/clientes')
+                    this.clearForm();
+                    router.push('/clientes');
                     this.forceRender();
                 })
                 .catch(err => { console.log(err); });
         },
 
         back: function () {
-            this.customerDetailToSave = {}
-            this.customerId = {}
+            this.clearForm();
             router.push('/clientes')
             this.forceRender();
 

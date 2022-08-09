@@ -4,8 +4,13 @@ import HeaderItem from "./components/HeaderItem.vue";
 import FooterItem from "./components/FooterItem.vue";
 import { useAuthenticationStore } from "./stores/authenticationStore";
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
+import { onBeforeMount } from "vue";
 const authentication = useAuthenticationStore();
 const salvarCustomerStore = useSalvarCustomerStore();
+
+
+onBeforeMount(() => { authentication.authenticationPersistOnReload(); });
+
 
 
 </script>

@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useCustomerStore } from '@/stores/customerStore';
 import { useSalvarCustomerStore } from '@/stores/salvarCustomerStore';
-import { onBeforeMount } from 'vue';
+
+
 const customerStore = useCustomerStore();
 const salvarCustomerStore = useSalvarCustomerStore();
-
 const isEditing = ("0".includes(salvarCustomerStore.customerId)) ? false : true;
-
 let data = await customerStore.getCustomerById(salvarCustomerStore.customerId);
 salvarCustomerStore.loadCustomerData(data);
+if (!isEditing) { salvarCustomerStore.startForm() }
 
-onBeforeMount(() => { salvarCustomerStore.startForm() });
+
 
 
 </script>

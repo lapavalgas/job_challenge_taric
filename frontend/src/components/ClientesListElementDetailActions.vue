@@ -13,8 +13,9 @@ const props = defineProps({
                 Editar</router-link>
         </button>
         <br>
-        <button v-on:click="salvarCustomerStore.confirmarDeletar(props.customerId)" style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
-            class="btn btn-danger">Deletar </button>
+        <button v-on:click="salvarCustomerStore.confirmarDeletar(props.customerId)"
+            style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button" class="btn btn-danger">Deletar
+        </button>
     </div>
 
 </template>
