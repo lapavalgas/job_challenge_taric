@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import router from "@/router";
 
 export const useAddressStore = defineStore({
     id: "address",
@@ -8,6 +9,7 @@ export const useAddressStore = defineStore({
 
         inputCep: "" as string,
         buscaCepResult: {} as any,
+        statusCode: "500" as string,
 
         listaEnderecos: [] as any,
 
@@ -21,24 +23,19 @@ export const useAddressStore = defineStore({
 
     actions: {
 
+        keyboardEnterSubmit: function () {
+            this.updateView();
+            router.push('/enderecos/buscar');
+        },
+
         updateView: function () {
+            if (this.inputCep == "") { this.inputCep = "00000000" }
             this.buscaCep();
-            setTimeout(() => {
-                console.log(this.update)
-                this.update += 1;
-            }, 500);
-            setTimeout(() => {
-                console.log(this.update)
-                this.update += 1;
-            }, 1000);
-            setTimeout(() => {
-                console.log(this.update)
-                this.update += 1;
-            }, 3000);
-            setTimeout(() => {
-                console.log(this.update)
-                this.update += 1;
-            }, 6000);
+            setTimeout(() => { this.update += 1; }, 500);
+            setTimeout(() => { this.update += 1; }, 1000);
+            setTimeout(() => { this.update += 1; }, 3000);
+            setTimeout(() => { this.update += 1; }, 6000);
+            setTimeout(() => { this.update += 1; }, 12000);
         },
 
         buscaCep: async function (): Promise<any> {
@@ -103,6 +100,7 @@ export const useAddressStore = defineStore({
                 .then((res) => { return res.json() })
                 .then(res => {
                     this.listaEnderecos = res;
+                    // this.statusCode = res.buscaCep.statusCode;
                     return res;
                 })
                 .catch(err => { console.log(err); });

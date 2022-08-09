@@ -51,7 +51,7 @@ export const useAuthenticationStore = defineStore({
                 salvarCustomerStore.forceRender();
             }
             if (this.isUserLoggedValue) {
-                router.push({ path: '/clientes' })
+                // router.push({ path: '/clientes' })
                 salvarCustomerStore.forceRender();
             }
         },

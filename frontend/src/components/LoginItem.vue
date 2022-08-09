@@ -2,6 +2,7 @@
 import { useAuthenticationStore } from '@/stores/authenticationStore';
 
 const authentication = useAuthenticationStore();
+
 window.addEventListener('keydown', (event) => {
     authentication.keyboardEnterSubmit(event);
 });
@@ -19,8 +20,8 @@ window.addEventListener('keydown', (event) => {
                         <label for="userLoginInput">Usuário</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input v-model="authentication.pass" type="password"
-                            class="form-control" id="passLoginInput" placeholder="password">
+                        <input v-model="authentication.pass" type="password" class="form-control" id="passLoginInput"
+                            placeholder="password">
                         <label for="passLoginInput">Senha</label>
                     </div>
                     <div class="form-floating mb-3">

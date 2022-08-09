@@ -6,10 +6,11 @@ const addressStore = useAddressStore();
 
 let buscaCep = addressStore.buscaCepResult.buscaCep;
 
+
 </script>
 <template>
     <br>
-    <div class="card card-enderecos-margin">
+    <div v-if="!(buscaCep == undefined)" class="card card-enderecos-margin">
         <div class="card-body">
             <div v-if="buscaCep.statusCode == '200'" class="enderecodata">
                 <span v-if="buscaCep.logradouro" class="logradouro"><strong> {{ buscaCep.logradouro }}</strong>, </span>
