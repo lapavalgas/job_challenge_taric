@@ -5,11 +5,6 @@ const props = defineProps({
     customerId: 0 as any,
 });
 
-function deleteCustomer() {
-    salvarCustomerStore.deleteCustomer(props.customerId);
-    salvarCustomerStore.forceRender();
-}
-
 </script>
 <template>
     <div class="btn-card-userdata">
@@ -18,10 +13,10 @@ function deleteCustomer() {
                 Editar</router-link>
         </button>
         <br>
-        <button v-on:click="deleteCustomer()" style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
+        <button v-on:click="salvarCustomerStore.confirmarDeletar(props.customerId)" style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button"
             class="btn btn-danger">Deletar </button>
     </div>
-    
+
 </template>
 <style>
 .dec {

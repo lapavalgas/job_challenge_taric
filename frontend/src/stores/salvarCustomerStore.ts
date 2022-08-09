@@ -24,6 +24,19 @@ export const useSalvarCustomerStore = defineStore({
 
         componentKey: 0,
 
+        formIsValid: {
+            nome: true,
+            cpf: true,
+            email: true,
+            telefone: true,
+            cep: true,
+            logradouro: true,
+            numero: true,
+            bairro: true,
+            cidade: true,
+            estado: true,
+        }
+
     }),
 
     getters: {
@@ -32,8 +45,139 @@ export const useSalvarCustomerStore = defineStore({
 
     actions: {
 
+        form: function () {
+            return {
+                validaNome: () => {
+                    if (this.customerDetailToSave.nome.length >= 4) { this.formIsValid.nome = true; } else { this.formIsValid.nome = false; }
+                },
+                validaCpf: () => {
+                    if (this.customerDetailToSave.cpf.length >= 11) { this.formIsValid.cpf = true; } else { this.formIsValid.cpf = false; }
+                },
+                validaEmail: () => {
+                    if (this.customerDetailToSave.email.includes('@') && this.customerDetailToSave.email.includes('.')) { this.formIsValid.email = true; } else { this.formIsValid.email = false; }
+                },
+                validaTelefone: () => {
+                    if (this.customerDetailToSave.telefone.length >= 11) { this.formIsValid.telefone = true; } else { this.formIsValid.telefone = false; }
+                },
+                validaCep: () => {
+                    if (this.customerDetailToSave.cep.length >= 8) { this.formIsValid.cep = true; } else { this.formIsValid.cep = false; }
+                },
+                validaLogradouro: () => {
+                    if (this.customerDetailToSave.logradouro.length >= 4) { this.formIsValid.logradouro = true; } else { this.formIsValid.logradouro = false; }
+                },
+                validaNumero: () => {
+                    if (this.customerDetailToSave.numero.length >= 1) { this.formIsValid.numero = true; } else { this.formIsValid.numero = false; }
+                },
+                validaBairro: () => {
+                    if (this.customerDetailToSave.bairro.length >= 2) { this.formIsValid.bairro = true; } else { this.formIsValid.bairro = false; }
+                },
+                validaCidade: () => {
+                    if (this.customerDetailToSave.localidade.length >= 2) { this.formIsValid.cidade = true; } else { this.formIsValid.cidade = false; }
+                },
+                validaEstado: () => {
+                    if (this.customerDetailToSave.uf.length >= 2) { this.formIsValid.estado = true; } else { this.formIsValid.estado = false; }
+                },
+            }
+        },
+
+        formValida: function () {
+            this.form().validaNome();
+            this.form().validaCpf();
+            this.form().validaEmail();
+            this.form().validaTelefone();
+            this.form().validaCep();
+            this.form().validaLogradouro();
+            this.form().validaNumero();
+            this.form().validaBairro();
+            this.form().validaCidade();
+            this.form().validaEstado();
+
+            const validCustomer = (
+                this.formIsValid.nome &&
+                this.formIsValid.cpf &&
+                this.formIsValid.email &&
+                this.formIsValid.telefone &&
+                this.formIsValid.cep &&
+                this.formIsValid.logradouro &&
+                this.formIsValid.numero &&
+                this.formIsValid.bairro &&
+                this.formIsValid.cidade &&
+                this.formIsValid.estado
+            );
+
+            if (validCustomer) { return true; } else { return false; }
+        },
+
+        startForm: function () {
+            this.customerDetailToSave.nome = "";
+            this.customerDetailToSave.cpf = "";
+            this.customerDetailToSave.email = "";
+            this.customerDetailToSave.telefone = "";
+            this.customerDetailToSave.cep = "";
+            this.customerDetailToSave.logradouro = "";
+            this.customerDetailToSave.numero = "";
+            this.customerDetailToSave.bairro = "";
+            this.customerDetailToSave.localidade = "";
+            this.customerDetailToSave.uf = "";
+        },
+
+        nameMask: function () {
+            this.customerDetailToSave.nome = this.customerDetailToSave.nome
+                .replace(/[^a-zA-Z ]/g, "");
+        },
+
+        cpfMask: function () {
+            this.customerDetailToSave.cpf = this.customerDetailToSave.cpf
+                .replace(/[^\d]/g, "")
+                .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4");
+        },
+
+        telefoneMask: function () {
+            this.customerDetailToSave.telefone = this.customerDetailToSave.telefone
+                .replace(/[^\d]/g, "")
+                .replace(/(\d{0})(\d{2})(\d{0})(\d{5})/g, "$1($2)$3 $4-");
+        },
+
+        cepEnderecoMask: function () {
+            this.customerDetailToSave.cep = this.customerDetailToSave.cep
+                .replace(/[^\d]/g, "")
+            // .replace(/(\d{5})/g, "$1-");
+            this.checkCep();
+        },
+
+        numeroEnderecoMask: function () {
+            this.customerDetailToSave.numero = this.customerDetailToSave.numero.replace(/[^\d]/g, "");
+        },
+
+        ufEnderecoMask: function () {
+            this.customerDetailToSave.estado = this.customerDetailToSave.estado.replace(/^\d+$/, "");
+        },
+
         forceRender: function () {
             this.componentKey += 1;
+        },
+
+        confirm: function (txt: string) {
+            return confirm(txt);
+
+        },
+
+        confirmarSalvar: function () {
+            if (this.confirm("Deseja salvar os dados do cliente?")) {
+                if (this.formValida()) {
+                    this.salvaCustomer();
+                } else {
+                    alert('Há inconsistencia, verifique os dados do cliente.');
+                }
+            }
+        },
+        confirmarDeletar: function (clienteId: string) {
+            if (this.confirm("Deseja deletar os dados do cliente?")) { this.deleteCustomer(clienteId); }
+
+        },
+        confirmarCancelar: function () {
+            if (this.confirm("Deseja cancelar operação?")) { this.back(); }
+
         },
 
         setCustomer: function (customerId: string): void {
@@ -46,7 +190,7 @@ export const useSalvarCustomerStore = defineStore({
         updateCustomerData: function (cep: any): void {
             this.customerDetailToSave.enderecoCepId = null;
             this.customerDetailToSave.bairro = cep.bairro;
-            this.customerDetailToSave.cep = cep.cep;
+            this.customerDetailToSave.cep = (cep.cep);
             this.customerDetailToSave.enderecoCepId = cep.enderecoCepId;
             this.customerDetailToSave.ibge = cep.ibge;
             this.customerDetailToSave.localidade = cep.localidade;
@@ -63,6 +207,7 @@ export const useSalvarCustomerStore = defineStore({
                 let cep = await this.buscaCep(this.customerDetailToSave.cep);
                 if (this.customerDetailToSave.cep !== cep.cep) {
                     this.updateCustomerData(cep);
+                    this.formValida();
                     console.log("LOG: OpenCEP updated the Customer CEP Data. ");
                 }
             }
