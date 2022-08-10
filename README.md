@@ -4,24 +4,22 @@ Esse desafio foi proposto para avaliar as competências técnicas em desenvolvim
 
 Agosto, 2022 (de 4 de agosto a 09 de agosto)
 
-Foi solicitado como desafio técnico desenvolver uma aplicação de cadastro de clientes que consumisse uma API de correios para validar os dados de endereço pelo CEP. Era requisito ter frontend com vuejs, backend com java e infraestrutura docker. 
+Foi solicitado como desafio técnico desenvolver uma aplicação de cadastro de clientes que consumisse a API do Correios para validar os dados de endereço pelo CEP. Era requisito ter frontend com Vuejs, backend com Java e infraestrutura dockerizada, conforme detalhado a seguir:
 
-Conforme detalhado a seguir:
-
-- Features:
+- **Features**:
 - [x] Autenticação por login e senha
 - [x] Listar clientes, cadastrar clientes, excluir clientes e visualizar detalhes
 - [x] Validação do endereço do cliente pelo [OpenCEP](https://opencep.com/)
 
-- Backend:
+- **Backend**:
 - [x] Desenvolver o backend em [Spring Boot](https://spring.io/projects/spring-boot) / Java
-- [x] Utilizar um banco de dados relacional [H2](https://www.h2database.com/html/main.html)
+- [x] Utilizar um banco de dados relacional (utilizei o [H2](https://www.h2database.com/html/main.html)) 
 - [x] Utilizar [Graphql](https://graphql.org/) para o sistema de comunicação das APIs
 - [x] Disponibilizar na API rotas para cadastro e consumo de clientes e endereços
 - [x] Desenvolver cobertura de testes unitários para o backend (opcional)
 - [x] Disponibilizar o backend em imagem Docker e docker compose 
 
-- Frontend: 
+- **Frontend**: 
 - [x] Desenvolver o frontend em [VueJs](https://vuejs.org/) com [Vuex](https://vuex.vuejs.org/) / [Pinia](https://pinia.vuejs.org/) 
 - [x] Desenvolver tela de login, cadastro, listagem de clientes e visualização
 - [x] Utilizar o sistema de subrotas
@@ -56,10 +54,11 @@ $ npx cypress run
 
 5. O backend roda no link [http://localhost:8080/](http://localhost:8080/)
    1. no link [http://localhost:8080/graphiql?path=/graphql](http://localhost:8080/graphiql?path=/graphql) é possível rodar querys no backend da aplicação
-   2. no diretório [resources do backend](\backend\src\main\resources\graphql) é possível ver as querys utilizadas para essa aplicação
+   2. no diretório [resources do backend](https://github.com/lapavalgas/job_challenge_taric/tree/main/backend/src/main/resources/graphql) é possível ver as querys utilizadas para essa aplicação
 
 
 7. Os testes unitários do backend foram desenvolvidos com [jUnit](https://junit.org/junit5/)/[Spring](https://spring.io/projects/spring-boot)
+    
     2. Na raiz do diretório de backend, rodar o comando: 
 ```shell  
 $ mvn test
