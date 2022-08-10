@@ -28,7 +28,7 @@ mutation {
 
 ```graphql
 mutation {
-    buscaCep(cep: "88101260") {
+    buscaCep(cep: "00000000") {
         statusCode
         msg
         enderecoCepId
@@ -91,7 +91,7 @@ query {
 
 ```graphql
 query {
-    cliente(id: 1) {
+    cliente(id: 0) {
         statusCode
         msg
         clienteId
@@ -118,19 +118,19 @@ query {
 mutation{
     salvaCliente(
         data:{
-            enderecoCepId: "12"
+            enderecoCepId: "00"
             cpf: "00000000002"
-            nome: "Rafael Genericuser da Silva"
-            email: "dasilva123@cliente.com"
-            telefone: "(000) 111111111"
+            nome: "Nome de Usuário"
+            email: "email@de.usuario"
+            telefone: "(000) 00000-0000"
             cep: "11111111"
-            logradouro: "Rua da Ficção e Meu Teste"
-            numero: "N. 101"
-            complemento: "Ilha das Flores, Ap. 10"
-            bairro: "Cenouras"
-            localidade: "Abacaxi"
-            uf: "sc"
-            ibge: "20000"
+            logradouro: "Rua do usuario"
+            numero: "000"
+            complemento: "Na casa do usuario"
+            bairro: "Bairrro do usuario"
+            localidade: "Cidade do usuario"
+            uf: "DF"
+            ibge: "0"
         }){
         clienteId
         enderecoCepId
@@ -142,7 +142,7 @@ mutation{
 
 ```graphql
 mutation {
-    deleteCliente(id: "1"){statusCode msg}
+    deleteCliente(id: "0"){statusCode msg}
 }
 ```
 

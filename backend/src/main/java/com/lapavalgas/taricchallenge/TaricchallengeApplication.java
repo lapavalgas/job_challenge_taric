@@ -42,7 +42,7 @@ public class TaricchallengeApplication {
             d1.setTelefone("(48) 98888-1313");
             d1.setCep("88803-140");
             d1.setLogradouro("Rua Thomé de Souza");
-            d1.setNumero("N. 2321");
+            d1.setNumero("2321");
             d1.setComplemento("Na esquina com a casa de madeira velha");
             d1.setBairro("Michel");
             d1.setLocalidade("Criciúma");
@@ -58,7 +58,7 @@ public class TaricchallengeApplication {
             d2.setTelefone("(48) 98876-0213");
             d2.setCep("88067-140");
             d2.setLogradouro("Rua Manoel Vidal");
-            d2.setNumero("N. 1A");
+            d2.setNumero("1A");
             d2.setComplemento("Ed. Azul, Ap. 61");
             d2.setBairro("Pântano do Sul");
             d2.setLocalidade("Florianópolis");
