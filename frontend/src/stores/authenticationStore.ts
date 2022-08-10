@@ -89,9 +89,13 @@ export const useAuthenticationStore = defineStore({
             this.routerAuthenticationBehaviour();
         },
 
-        confirmLogoff: function () {
-            if (confirm("Deseja fazer logout?")) { this.logoff(); }
-        },
+        // confirmLogoff: function () {
+        //     if (confirm("Deseja fazer logout?")) {
+        //         this.logoff();
+        //     } else {
+        //         alert('NAO SAIU')
+        //     }
+        // },
 
         logoff: async function (): Promise<any> {
             const body = JSON.stringify({

@@ -9,10 +9,10 @@ const props = defineProps({
 </script>
 <template>
     <div class="btn-card-userdata">
-        <button style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button" class="btn btn-primary">
-            <router-link v-on:click='salvarCustomerStore.setCustomer(props.customerId)' class="dec" to="/salvar">
-                Editar</router-link>
-        </button>
+
+        <router-link v-on:click='salvarCustomerStore.setCustomer(props.customerId)' class="dec" to="/salvar"><span
+                style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button" class="btn btn-primary">
+                Editar</span></router-link>
         <br>
         <button v-on:click="salvarCustomerStore.confirmarDeletar(props.customerId)"
             style="min-width: 80px; margin: 2px; margin-top: 1rem; " type="button" class="btn btn-danger">Deletar

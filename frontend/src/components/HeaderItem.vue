@@ -10,7 +10,7 @@ const customerId = '0' as string;
 
 function clientes() { salvarCustomerStore.clearForm(); }
 function cadastrar() { salvarCustomerStore.clearForm(); salvarCustomerStore.setCustomer(customerId); }
-function logout() { salvarCustomerStore.clearForm(); authentication.confirmLogoff() }
+function logout() { salvarCustomerStore.clearForm(); authentication.logoff() }
 
 </script>
 <template>
