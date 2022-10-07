@@ -30,7 +30,7 @@ public class CustomerServiceTest {
     }
 
     public void authentication() {
-        LoginService.login("taric", "taric1234");
+        LoginService.login("admin", "admin");
     }
 
     @Test

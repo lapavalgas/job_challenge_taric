@@ -4,7 +4,7 @@
 
 ```graphql
 mutation {
-    login(user:"taric", pass:"taric1234") {
+    login(user:"admin", pass:"admin") {
         cookie
         statusCode
         msg

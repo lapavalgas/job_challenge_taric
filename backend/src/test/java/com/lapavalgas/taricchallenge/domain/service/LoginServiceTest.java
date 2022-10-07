@@ -26,7 +26,7 @@ public class LoginServiceTest {
     @AfterEach
     public void after(){ LoginService.logoff(); }
     public DTO authentication(){
-        return LoginService.login("taric", "taric1234");
+        return LoginService.login("admin", "admin");
     }
     public DTO failedAuthentication(){
         return LoginService.login("rafael", "rafael");
@@ -46,7 +46,7 @@ public class LoginServiceTest {
 
     @Test
     void check_login_component_invalidCredentials(){
-        var isValidCredentials = FakeSessionService.isUserCredentialsValid("taric", "taric1234");
+        var isValidCredentials = FakeSessionService.isUserCredentialsValid("admin", "admin");
         Assert.isTrue(
                 isValidCredentials==true,
                 "TEST ERROR - 'login component' failed to check invalid credentials");

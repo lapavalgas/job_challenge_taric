@@ -5,8 +5,8 @@ describe("Open app and do the authentication", () => {
         cy.wait(200);
     });
     it("Type the right credentials", () => {
-        cy.get("#userLoginInput").type("taric");
-        cy.get("#passLoginInput").type("taric1234");
+        cy.get("#userLoginInput").type("admin");
+        cy.get("#passLoginInput").type("admin");
         cy.get("#btn-login").click();
         cy.wait(400);
     });

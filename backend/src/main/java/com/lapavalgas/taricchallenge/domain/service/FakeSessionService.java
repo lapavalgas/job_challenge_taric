@@ -3,9 +3,9 @@ package com.lapavalgas.taricchallenge.domain.service;
 import com.lapavalgas.taricchallenge.domain.MSG;
 
 public class FakeSessionService {
-    private static String ADMIN_USER = "taric";
-    private static String ADMIN_PASSWORD = "taric1234";
-    public static String USER_LOGGED = ""; // deixar em branco // tarictaric1234
+    private static String ADMIN_USER = "admin";
+    private static String ADMIN_PASSWORD = "admin";
+    public static String USER_LOGGED = ""; // deixar em branco // 
 
     public static boolean isUserCredentialsValid(String user, String password) {
         if (ADMIN_USER.equals(user) && ADMIN_PASSWORD.equals(password)) {

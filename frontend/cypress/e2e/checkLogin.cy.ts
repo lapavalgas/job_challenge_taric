@@ -10,8 +10,8 @@ describe("Open app", () => {
 describe("Check authentication login failed", () => {
   it("Type the wrong credentials", () => {
     cy.visit("/");
-    cy.get("#userLoginInput").type("taric1234");
-    cy.get("#passLoginInput").type("taric1234");
+    cy.get("#userLoginInput").type("admin");
+    cy.get("#passLoginInput").type("admin");
     cy.get("#btn-login").click();
     cy.wait(200);
   });
@@ -20,8 +20,8 @@ describe("Check authentication login failed", () => {
 describe("Check authentication login successful", () => {
   it("Type the right credentials", () => {
     cy.visit("/");
-    cy.get("#userLoginInput").type("taric");
-    cy.get("#passLoginInput").type("taric1234");
+    cy.get("#userLoginInput").type("admin");
+    cy.get("#passLoginInput").type("admin");
     cy.get("#btn-login").click();
     cy.wait(400);
     cy.contains("h5", "Clientes");
@@ -41,8 +41,8 @@ describe("ReCheck authentication login successful", () => {
   it("Type the right credentials", () => {
     cy.contains("h5", "Sign in");
     cy.visit("/");
-    cy.get("#userLoginInput").type("taric");
-    cy.get("#passLoginInput").type("taric1234");
+    cy.get("#userLoginInput").type("admin");
+    cy.get("#passLoginInput").type("admin");
     cy.get("#btn-login").click();
     cy.wait(400);
     cy.contains("h5", "Clientes");
@@ -61,8 +61,8 @@ describe("ReCheck authentication login failed", () => {
   it("Type the wrong credentials", () => {
     cy.contains("h5", "Sign in");
     cy.visit("/");
-    cy.get("#userLoginInput").type("taric1234");
-    cy.get("#passLoginInput").type("taric1234");
+    cy.get("#userLoginInput").type("admin");
+    cy.get("#passLoginInput").type("admin");
     cy.get("#btn-login").click();
     cy.wait(400);
   });
