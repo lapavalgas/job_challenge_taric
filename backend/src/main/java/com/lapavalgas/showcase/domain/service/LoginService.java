@@ -1,15 +1,10 @@
-package com.lapavalgas.taricchallenge.domain.service;
+package com.lapavalgas.showcase.domain.service;
 
-import com.lapavalgas.taricchallenge.domain.DTO;
-import com.lapavalgas.taricchallenge.domain.MSG;
-import org.springframework.context.annotation.Bean;
+import com.lapavalgas.showcase.domain.DTO;
+import com.lapavalgas.showcase.domain.MSG;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 @Controller
 public class LoginService {

@@ -1,10 +1,10 @@
-package com.lapavalgas.taricchallenge.domain.service;
+package com.lapavalgas.showcase.domain.service;
 
-import com.lapavalgas.taricchallenge.domain.DTO;
-import com.lapavalgas.taricchallenge.domain.MSG;
-import com.lapavalgas.taricchallenge.domain.Mapper;
-import com.lapavalgas.taricchallenge.domain.model.*;
-import com.lapavalgas.taricchallenge.domain.repository.CEPRepository;
+import com.lapavalgas.showcase.domain.DTO;
+import com.lapavalgas.showcase.domain.MSG;
+import com.lapavalgas.showcase.domain.Mapper;
+import com.lapavalgas.showcase.domain.model.*;
+import com.lapavalgas.showcase.domain.repository.CEPRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 
 @Controller
 public class AddressService {

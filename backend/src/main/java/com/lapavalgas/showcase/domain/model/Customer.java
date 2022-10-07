@@ -1,4 +1,4 @@
-package com.lapavalgas.taricchallenge.domain.model;
+package com.lapavalgas.showcase.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

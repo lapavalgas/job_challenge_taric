@@ -1,6 +1,6 @@
-package com.lapavalgas.taricchallenge.domain.repository;
+package com.lapavalgas.showcase.domain.repository;
 
-import com.lapavalgas.taricchallenge.domain.model.CEP;
+import com.lapavalgas.showcase.domain.model.CEP;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

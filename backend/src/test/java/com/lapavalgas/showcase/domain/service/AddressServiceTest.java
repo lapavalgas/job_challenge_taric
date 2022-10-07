@@ -1,14 +1,12 @@
-package com.lapavalgas.taricchallenge.domain.service;
+package com.lapavalgas.showcase.domain.service;
 
-import com.lapavalgas.taricchallenge.domain.DTO;
-import com.lapavalgas.taricchallenge.domain.MSG;
+import com.lapavalgas.showcase.domain.MSG;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.util.Assert;
 
 @SpringBootTest

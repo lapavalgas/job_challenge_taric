@@ -1,6 +1,6 @@
-package com.lapavalgas.taricchallenge.domain.service;
+package com.lapavalgas.showcase.domain.service;
 
-import com.lapavalgas.taricchallenge.domain.MSG;
+import com.lapavalgas.showcase.domain.MSG;
 
 public class FakeSessionService {
     private static String ADMIN_USER = "admin";

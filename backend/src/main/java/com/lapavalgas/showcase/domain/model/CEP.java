@@ -1,4 +1,4 @@
-package com.lapavalgas.taricchallenge.domain.model;
+package com.lapavalgas.showcase.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;

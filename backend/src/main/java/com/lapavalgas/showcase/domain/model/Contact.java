@@ -1,4 +1,4 @@
-package com.lapavalgas.taricchallenge.domain.model;
+package com.lapavalgas.showcase.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
@@ -6,32 +6,28 @@ import lombok.*;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "address")
-@AllArgsConstructor
+@Table(name = "contact")
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Builder
 @EqualsAndHashCode(exclude = {"customer"})
-public class Address {
+public class Contact {
 
     @Id
     @Column(name = "customer_id")
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cep_id")
-    private CEP cep;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "addressNumber")
-    private String addressNumber;
-
-    @Column(name = "addressComplement")
-    private String addressComplement;
+    @Column(name = "tel")
+    private String tel;
 
     @OneToOne(cascade = CascadeType.ALL)
     @MapsId
     @JoinColumn(name = "customer_id")
-    @JsonIgnoreProperties("address")
+    @JsonIgnoreProperties("contact")
     @ToString.Exclude
     private Customer customer;
 

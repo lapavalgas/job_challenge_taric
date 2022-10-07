@@ -1,11 +1,11 @@
-package com.lapavalgas.taricchallenge.domain.service;
+package com.lapavalgas.showcase.domain.service;
 
-import com.lapavalgas.taricchallenge.domain.model.Customer;
-import com.lapavalgas.taricchallenge.domain.DTO;
-import com.lapavalgas.taricchallenge.domain.MSG;
-import com.lapavalgas.taricchallenge.domain.Mapper;
-import com.lapavalgas.taricchallenge.domain.repository.CEPRepository;
-import com.lapavalgas.taricchallenge.domain.repository.CustomerRepository;
+import com.lapavalgas.showcase.domain.model.Customer;
+import com.lapavalgas.showcase.domain.DTO;
+import com.lapavalgas.showcase.domain.MSG;
+import com.lapavalgas.showcase.domain.Mapper;
+import com.lapavalgas.showcase.domain.repository.CEPRepository;
+import com.lapavalgas.showcase.domain.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;

@@ -1,9 +1,9 @@
-package com.lapavalgas.taricchallenge.domain;
+package com.lapavalgas.showcase.domain;
 
-import com.lapavalgas.taricchallenge.domain.model.Address;
-import com.lapavalgas.taricchallenge.domain.model.CEP;
-import com.lapavalgas.taricchallenge.domain.model.Contact;
-import com.lapavalgas.taricchallenge.domain.model.Customer;
+import com.lapavalgas.showcase.domain.model.Address;
+import com.lapavalgas.showcase.domain.model.CEP;
+import com.lapavalgas.showcase.domain.model.Contact;
+import com.lapavalgas.showcase.domain.model.Customer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,7 @@
-package com.lapavalgas.taricchallenge.domain.service;
+package com.lapavalgas.showcase.domain.service;
 
-import com.lapavalgas.taricchallenge.domain.DTO;
-import com.lapavalgas.taricchallenge.domain.MSG;
-import com.lapavalgas.taricchallenge.domain.Mapper;
-import com.lapavalgas.taricchallenge.domain.repository.CustomerRepository;
+import com.lapavalgas.showcase.domain.DTO;
+import com.lapavalgas.showcase.domain.MSG;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

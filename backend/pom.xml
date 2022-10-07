@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.lapavalgas</groupId>
-	<artifactId>taricchallenge</artifactId>
+	<artifactId>showcase</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>taricchallenge</name>
-	<description>TARIC job challenge.</description>
+	<name>showcase</name>
+	<description>Technical Showcase for Job Interviews.</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
