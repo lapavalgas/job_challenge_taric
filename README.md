@@ -1,4 +1,8 @@
-# Desafio técnico da TARIC startup Zitrus Healthtech 
+<!-- # Desafio técnico da TARIC startup Zitrus Healthtech  -->
+
+# Technical Showcase for Job Interview
+
+## ZIP Code showcase
 
 Esse desafio foi proposto para avaliar as competências técnicas em desenvolvimento fullstack.
 
@@ -31,7 +35,7 @@ Foi solicitado como desafio técnico desenvolver uma aplicação de cadastro de 
 1. Instalar o [docker](https://www.docker.com/)
 
 
-2. Clonar o [projeto](https://github.com/lapavalgas/job_challenge_taric)
+2. Clonar o [projeto](https://github.com/lapavalgas/technical_showcase_zip_code)
 
 
 3. Na raiz do projeto, rodar o comando:
@@ -40,8 +44,8 @@ $ docker-compose up
 ```
 
 4. O frontend roda no link [http://localhost:4173/](http://localhost:4173/)
-   1. **user**: taric 
-   2. **password**: taric1234 
+   1. **user**: admin 
+   2. **password**: admin 
 
 
 6. Os testes e2e do frontend foram desenvolvidos com [Cypress](https://docs.cypress.io/) 
@@ -54,7 +58,7 @@ $ npx cypress run
 
 5. O backend roda no link [http://localhost:8080/](http://localhost:8080/)
    1. no link [http://localhost:8080/graphiql?path=/graphql](http://localhost:8080/graphiql?path=/graphql) é possível rodar querys no backend da aplicação
-   2. no diretório [resources do backend](https://github.com/lapavalgas/job_challenge_taric/tree/main/backend/src/main/resources/graphql) é possível ver as querys utilizadas para essa aplicação
+   2. no diretório [resources do backend](https://github.com/lapavalgas/technical_showcase_zip_code/tree/main/backend/src/main/resources/graphql) é possível ver as querys utilizadas para essa aplicação
 
 
 7. Os testes unitários do backend foram desenvolvidos com [jUnit](https://junit.org/junit5/)/[Spring](https://spring.io/projects/spring-boot)
