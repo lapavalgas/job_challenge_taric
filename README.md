@@ -2,8 +2,8 @@
 <!-- LANGUAGE -->
 <!-- LANGUAGE -->
 
-[english](README.md) -
-portuguese
+english -
+[portuguese](README_pt-br.md)
 <br>
 
 <!-- HEADER -->
@@ -68,9 +68,9 @@ portuguese
 <p align="left">Prerequisites:</p>
 
 - **Features**:
-  [x] Authentication by login and password
-  [x] List clients, register clients, delete clients, and view details
-  [x] Validation of the client's address through [OpenCEP](https://opencep.com/)
+- [x] Authentication by login and password
+- [x] List clients, register clients, delete clients, and view details
+- [x] Validation of the client's address through [OpenCEP](https://opencep.com/)
 
 - **Backend**:
 - [x] Develop the backend in [Spring Boot](https://spring.io/projects/spring-boot) / Java
